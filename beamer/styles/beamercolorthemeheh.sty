@@ -1,0 +1,27 @@
+\mode<presentation>
+
+\RequirePackage{xcolor}
+
+\definecolor{heh@red}{RGB}{207, 34, 35}
+\definecolor{heh@blue}{RGB}{40, 60, 143}
+
+\setbeamercolor{alerted text}{fg=heh@red}
+
+\setbeamercolor{structure}{fg=heh@red}
+
+\setbeamercolor{block title}{fg=white,bg=heh@blue!75!black}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+\setbeamercolor*{qed symbol}{fg=heh@blue}
+
+\setbeamercolor{titlelike}{use=normal text,fg=normal text.fg}
+
+\setbeamercolor{page number in head/foot}{use=normal text,fg=normal text.fg!50}
+
+\mode
+<all>

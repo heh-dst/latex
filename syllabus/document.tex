@@ -1,0 +1,39 @@
+\documentclass[12pt,a4paper,french,toc=bib,oneside,version=3.41]{scrartcl}
+\setcounter{tocdepth}{\sectiontocdepth}
+
+\usepackage{amsmath,booktabs,fontspec,geometry,graphicx,microtype,multicol,setspace,titling}
+
+\usepackage[locale=FR]{siunitx}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{french}
+\usepackage{csquotes}
+
+\usepackage{hyperref}
+\title{Sujet \\ Section} % chktex 8
+\author{François Roland}
+%\date{11 avril 2023}
+
+\hypersetup{
+  colorlinks=true,
+  pdftitle={\thetitle{}},
+  pdfauthor={\theauthor{}},
+  pdflang={fr}
+}
+
+\usepackage{tikz}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage[sfdefault]{roboto}
+\usepackage{roboto-mono}
+\usepackage[mathrm=sym]{unicode-math}
+\setmathfont{Fira Math}
+
+\begin{document}
+\onehalfspacing{}
+
+\input{content}
+
+\end{document}

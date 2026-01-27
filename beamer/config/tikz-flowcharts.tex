@@ -1,0 +1,50 @@
+\usetikzlibrary{arrows,arrows.meta,positioning,shapes.geometric,shapes.misc}
+
+% Flowchart node styles
+\tikzset{
+	startstop/.style = {
+			rounded rectangle,
+			minimum width=3cm,
+			minimum height=1cm,
+			text centered,
+			draw=black,
+			fill=green!30
+		}
+}
+\tikzset{
+	process/.style = {
+			rectangle,
+			minimum width=3cm,
+			minimum height=1cm,
+			text centered,
+			draw=black,
+			fill=blue!30
+		}
+}
+\tikzset{
+	decision/.style = {
+			diamond,
+			minimum width=3cm,
+			minimum height=1cm,
+			text centered,
+			draw=black,
+			fill=orange!30
+		}
+}
+\tikzset{
+	io/.style = {
+			trapezium,
+			minimum width=3cm,
+			minimum height=1cm,
+			text centered,
+			trapezium left angle=75,
+			trapezium right angle=105,
+			draw=black,
+			fill=purple!30
+		}
+}
+\tikzset{
+    arrow/.style = {
+        thick,->,>=Triangle[]
+    }
+}
