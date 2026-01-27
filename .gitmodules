@@ -1,0 +1,4 @@
+[submodule "auto-multiple-choice"]
+	path = auto-multiple-choice
+	url = https://gitlab.com/a10684/auto-multiple-choice.git
+	branch = master
