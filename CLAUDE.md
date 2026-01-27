@@ -54,6 +54,37 @@ Content is separated from presentation format through a modular architecture:
 - **Fonts**: Roboto (sans-serif), Roboto Mono (monospace), Fira Math (mathematics)
 - **Packages**: amsmath, tikz, pgfplots, siunitx, hyperref, polyglossia
 
+## Installation
+
+### Automated Installation (Recommended)
+
+Run the Python installation script from the repository root:
+
+```bash
+python scripts/install.py
+```
+
+This script automatically:
+1. Detects your TEXMFHOME directory
+2. **Extracts and installs `automultiplechoice.sty`** if Auto Multiple Choice is not already available
+   - Automatically processes the `.dtx.in` source file
+   - Extracts version information from ChangeLog
+   - Allows LaTeX compilation without AMC binaries (useful on Windows without devcontainer)
+3. Installs the `heh-amc.cls` class
+4. Installs custom fonts (Luciole, IntoneMonoNerdFont)
+5. Installs required packages (`realscripts`) if not already present
+
+The script is **cross-platform** (Linux, Windows, macOS) and only updates files that have changed (rsync-like behavior).
+
+### AMC Package Extraction
+
+The script intelligently handles the AMC package:
+- **If AMC is installed** (via package manager): Uses the system version
+- **If AMC is not found**: Extracts `automultiplechoice.sty` from [`auto-multiple-choice/tex/automultiplechoice.dtx.in`](auto-multiple-choice/tex/automultiplechoice.dtx.in)
+  - This allows **LaTeX compilation** of AMC documents without the full AMC suite
+  - Useful for **Windows environments** or when working outside devcontainers
+  - Note: Full AMC features (scoring, analysis) still require the complete AMC installation
+
 ## Key Constraints
 
 1. **LuaLaTeX is required** for all components due to fontspec and OpenType font usage
