@@ -185,7 +185,12 @@ def extract_amc_sty(repo_root: Path, texmf_home: Path) -> bool:
     # Extract the .sty file using pdflatex
     print("  → Running pdflatex to extract .sty file...")
     run_command(
-        f'cd "{amc_tex_dir}" && pdflatex -halt-on-error -interaction=nonstopmode automultiplechoice.dtx && git clean -f',
+        f'cd "{amc_tex_dir}" && pdflatex -interaction=batchmode automultiplechoice.dtx',
+        check=False,
+        capture_output=False,
+    )
+    run_command(
+        f'cd "{amc_tex_dir}" && git clean -f',
         check=False,
         capture_output=False,
     )
