@@ -233,7 +233,7 @@ def main():
     # Install AMC class
     print("Installing AMC class...")
     amc_src = repo_root / "amc" / "heh-amc.cls"
-    amc_dest = texmf_home / "tex" / "latex" / "heh-amc" / "heh-amc.cls"
+    amc_dest = texmf_home / "tex" / "latex" / "heh-dst" / "heh-amc.cls"
     copy_file(amc_src, amc_dest, "heh-amc class")
     print()
 
