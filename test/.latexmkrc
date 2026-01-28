@@ -8,4 +8,10 @@ $pdf_mode = 4;
 $pdf_update_method = 0;
 $view = 'none';
 
-@default_files = (glob('beamer/*_notes.tex'), glob('beamer/*_handout.tex'), glob('amc/test-*.tex'), glob('syllabus/test-*.tex'));
+# Build all test documents in parallel
+@default_files = (
+    glob('beamer/*_notes.tex'),      # Beamer presentations with notes
+    glob('beamer/*_handout.tex'),    # Beamer student handouts
+    glob('amc/test-*.tex'),          # AMC exam documents
+    glob('syllabus/test-*.tex')      # Syllabus documents
+);

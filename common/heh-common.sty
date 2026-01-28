@@ -11,6 +11,8 @@
 \RequirePackage{tikz}
 \usetikzlibrary{calc}
 \RequirePackage{graphicx}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 % HEH Color Definitions
 % Red gradient for logos with depth/shadow effects
@@ -81,9 +83,9 @@
 
     % Department text (requires Roboto font to be loaded)
     \IfFontExistsTF{Roboto}{%
-      \newfontfamily\hehrobotofont{Roboto}
-      \node[anchor=base west,inner sep=0pt,node font=\hehrobotofont,text=heh@dark] at (3.43,0) {Sciences};
-      \node[anchor=base west,inner sep=0pt,node font=\hehrobotofont,text=heh@dark] (techno) at (3.43,-.36) {et technologies};
+      \newfontfamily\heh@robotofont{Roboto}
+      \node[anchor=base west,inner sep=0pt,node font=\heh@robotofont,text=heh@dark] at (3.43,0) {Sciences};
+      \node[anchor=base west,inner sep=0pt,node font=\heh@robotofont,text=heh@dark] (techno) at (3.43,-.36) {et technologies};
     }{%
       % Fallback if Roboto is not available
       \node[anchor=base west,inner sep=0pt,font=\sffamily\small,text=heh@dark] at (3.43,0) {Sciences};
