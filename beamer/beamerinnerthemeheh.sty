@@ -1,11 +1,35 @@
 \mode<presentation>
 
+\RequirePackage{tikz}
+\RequirePackage{heh-common}
+
+\pgfdeclareimage[height=2em]{logo-pole}{logo-pole-hainuyer.png}
+\pgfdeclareimage[height=2em]{logo-wbe}{logo-wbe.png}
+\tikzset{
+  hehballs/.pic={
+      \fill[heh@red1] (-4.5em,0) circle [radius=.5em];%
+      \fill[heh@red2] (-3em,0) circle [radius=.5em];%
+      \fill[heh@red3] (-1.5em,0) circle [radius=.5em];%
+      \fill[heh@red5] (0,0) circle [radius=.5em];%
+    }
+}
+
+\newsavebox{\heh@logo}
+\newlength{\wdoflogo}
+\sbox{\heh@logo}{\scalebox{0.9}{\HEHLogo}}
+\settowidth{\wdoflogo}{\usebox{\heh@logo}}
+
 \setbeamertemplate{items}[circle]
 \setbeamertemplate{sections/subsections in toc}[circle]
 
 \defbeamertemplate*{title page}{heh}[1][]
 {
-  \vbox{}
+  \thispagestyle{empty}%
+  \begin{tikzpicture}[remember picture, overlay]%
+    \node[anchor=north west,xshift=4pt,yshift=-4pt] at (current page.north west) {\usebox{\heh@logo}};%
+    \node[opacity=.3,anchor=south west] at (current page.south west) {\pgfuseimage{logo-wbe}\hspace{1em}\pgfuseimage{logo-pole}};%
+    \pic[anchor=south east,scale=.6,xshift=-2em,yshift=2em] at (current page.south east) {hehballs};%
+  \end{tikzpicture}%
   \vfill
   \begingroup
   \usebeamertemplate{title}
