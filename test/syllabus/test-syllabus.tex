@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper,french,toc=bib,oneside,version=3.41]{scrartcl}
+\setcounter{tocdepth}{\sectiontocdepth}
+
+\usepackage{amsmath,booktabs,fontspec,geometry,graphicx,microtype,multicol,setspace,titling}
+
+\usepackage[locale=FR]{siunitx}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{french}
+\usepackage{csquotes}
+
+\usepackage{hyperref}
+\title{Test Document}
+\author{HEH LaTeX Test Suite}
+
+\hypersetup{
+  colorlinks=true,
+  pdftitle={\thetitle{}},
+  pdfauthor={\theauthor{}},
+  pdflang={fr}
+}
+
+\usepackage{tikz}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage[sfdefault]{roboto}
+\usepackage{roboto-mono}
+\usepackage[mathrm=sym]{unicode-math}
+\setmathfont{Fira Math}
+
+% HEH branding
+\usepackage{heh-common}  % Provides HEH colors and logo
+
+% Configure hyperlinks with HEH blue
+\hypersetup{
+  linkcolor=heh@blue,
+  urlcolor=heh@blue,
+  citecolor=heh@blue
+}
+
+\begin{document}
+\onehalfspacing{}
+
+\maketitle{}
+
+\section{Test Section}
+
+Ceci est un document de test pour vérifier la compilation du template syllabus HEH DST.
+
+Ce document démontre l'utilisation des couleurs HEH et du logo.
+
+\subsection{Logo HEH}
+
+Voici le logo HEH intégré dans le document: \HEHLogo[0.5]
+
+\subsection{Tableau de test}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    Élément & Valeur             & Statut                         \\
+    \midrule
+    Test 1  & \SI{100}{\percent} & \textcolor{heh@blue}{OK}       \\
+    Test 2  & \SI{95}{\percent}  & \textcolor{heh@blue}{OK}       \\
+    Test 3  & \SI{88}{\percent}  & \textcolor{heh@red5}{À revoir} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Tableau de test avec couleurs HEH}
+\end{table}
+
+\end{document}

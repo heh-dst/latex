@@ -1,0 +1,67 @@
+\mode<presentation>
+
+\RequirePackage{tikz}
+
+\pgfdeclareimage[height=2em]{logo-pole}{logo-pole-hainuyer.png}
+\pgfdeclareimage[height=2em]{logo-wbe}{logo-wbe.png}
+\pgfdeclareimage[height=3em]{logo-heh}{logo-heh-dst.png}
+\tikzset{
+  hehballs/.pic={
+      \fill[heh@red!55!black] (-4.5em,0) circle [radius=.5em];%
+      \fill[heh@red!70!black] (-3em,0) circle [radius=.5em];%
+      \fill[heh@red!85!black] (-1.5em,0) circle [radius=.5em];%
+      \fill[heh@red] (0,0) circle [radius=.5em];%
+    }
+}
+
+\newsavebox{\heh@logo}
+\newlength{\wdoflogo}
+\sbox{\heh@logo}{\pgfuseimage{logo-heh}}
+\settowidth{\wdoflogo}{\usebox{\heh@logo}}
+
+\defbeamertemplate*{frametitle}{heh}[1][left]
+{%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by-\wdoflogo%
+  \hspace{\wdoflogo}%
+  \begin{beamercolorbox}[sep=.5em,#1,wd=\the\@tempdima]{frametitle}
+    \usebeamerfont{frametitle}%
+    \strut\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+        \else%
+        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+      \fi
+    }%
+  \end{beamercolorbox}%
+}
+
+\defbeamertemplate*{headline}{heh}
+{%
+  \begin{tikzpicture}[remember picture, overlay]%
+    \node[anchor=north west] at (current page.north west) {\usebox{\heh@logo}};%
+  \end{tikzpicture}%
+}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}
+{%
+  \hspace{1.5em}
+  \raisebox{-1em}{\tikz{%
+      \node[opacity=.3] at (0,0) {\pgfuseimage{logo-wbe}\hspace{1em}\pgfuseimage{logo-pole}};%
+    }}%
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber{}%
+  \hspace{5ex}%
+  \raisebox{-1pt}{\tikz{\pic at (0,0) {hehballs};}%
+  }%
+  \hspace{2em}%
+  \vspace{1em}%
+}
+
+\addtobeamertemplate{note page}{}{\thispdfpagelabel{notes:\insertframenumber}}
+
+\mode
+<all>

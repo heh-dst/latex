@@ -1,0 +1,134 @@
+\documentclass{heh-amc}
+
+\usetikzlibrary{arrows,calc,shapes.geometric,shapes.misc}
+
+% Flowchart node styles
+\tikzset{
+	startstop/.style = {
+			rounded rectangle,
+			minimum width=3cm,
+			minimum height=1cm,
+			text centered,
+			draw=black
+		}
+}
+
+\tikzset{
+	process/.style = {
+			rectangle,
+			minimum width=3cm,
+			minimum height=1cm,
+			text centered,
+			draw=black
+		}
+}
+
+\tikzset{
+	decision/.style = {
+			diamond,
+			minimum width=3cm,
+			minimum height=1cm,
+			text centered,
+			draw=black
+		}
+}
+
+\tikzset{
+	arrow/.style = {
+			thick,->,>=stealth
+		}
+}
+
+\ExamTitle{Examen}
+\Cohort{Testing 101 --- Bachelier en Sciences du testing}
+\Duration{9~minutes}
+\DurationExtra{12~minutes}
+
+\AMCrandomseed{2}                  % Fixed seed for reproducibility
+
+\begin{document}
+
+\element{testing.q01}{
+  \begin{question}{testing.q01.1}
+    Comment tester correctement~?
+    \begin{choices}
+      \correctchoice{en essayant de reproduire les conditions réelles d'utilisation}
+      \wrongchoice{les tests ne servent à rien}
+      \wrongchoice{les tests c'est cool, mais on n'a jamais le temps d'en faire}
+      \wrongchoice{les tests, c'est pour ceux qui ne savent pas programmer}
+      \lastchoices{}
+      \wrongchoice{aucune}
+      \wrongchoice{toutes}
+    \end{choices}
+  \end{question}
+}
+
+\element{testing.q01}{
+  \begin{question}{testing.q01.2}
+    Quelles sont les mauvaises pratiques de test~?
+    \begin{choices}
+      \wrongchoice{en testant les trucs vraiment bizarres que personne n'utilisera jamais}
+      \wrongchoice{les tests ne servent à rien}
+      \wrongchoice{les tests c'est cool, mais on n'a jamais le temps d'en faire}
+      \wrongchoice{les tests, c'est pour ceux qui ne savent pas programmer}
+      \lastchoices{}
+      \wrongchoice{aucune}
+      \correctchoice{toutes}
+    \end{choices}
+  \end{question}
+}
+
+\element{testing.q02}{
+  \begin{question}{testing.q02.1}
+    Quelle est la capitale de la France~?
+    \begin{multicols}{3}\AMCBoxedAnswers{}
+      \begin{choices}
+        \wrongchoice{Londres}
+        \wrongchoice{Berlin}
+        \correctchoice{Paris}
+        \wrongchoice{Madrid}
+        \lastchoices{}
+        \wrongchoice{aucune}
+        \wrongchoice{toutes}
+      \end{choices}
+    \end{multicols}
+  \end{question}
+}
+
+\element{testing.q02}{
+  \begin{question}{testing.q02.2}
+    Quelle est la capitale de l'Allemagne~?
+    \begin{multicols}{3}\AMCBoxedAnswers{}
+      \begin{choices}
+        \wrongchoice{Paris}
+        \correctchoice{Berlin}
+        \wrongchoice{Rome}
+        \wrongchoice{Bruxelles}
+        \lastchoices{}
+        \wrongchoice{aucune}
+        \wrongchoice{toutes}
+      \end{choices}
+    \end{multicols}
+  \end{question}
+}
+
+\begin{examcopy}[1]
+  \setcounter{figure}{0}
+  \CoverPage{}
+
+  \section*{Questions}
+
+  \vspace{1em}
+
+  \cleargroup{all}
+
+  \copygroup[1]{testing.q01}{all}
+  \copygroup[1]{testing.q02}{all}
+
+  \insertgroup{all}
+
+  \DraftPage{}
+  \AnswerSheet{}
+\end{examcopy}
+
+\end{document}
