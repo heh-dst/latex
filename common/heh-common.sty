@@ -7,12 +7,23 @@
 \ProvidesPackage{heh-common}[2026/01/28 v1.0 HEH-DST common resources]
 
 % Required packages
+\RequirePackage{amsmath}   % Capacités mathématiques étendues
+\RequirePackage[french]{babel}     % Support multilingue
 \RequirePackage{xcolor}
 \RequirePackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{arrows,arrows.meta,calc,positioning,shapes.geometric,shapes.misc}
 \RequirePackage{graphicx}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
+
+% --- Typographie ---
+\RequirePackage{fontspec}           % Sélection de polices pour LuaLaTeX
+\RequirePackage{luciole-math}       % Police mathématique Luciole
+\babelfont{rm}{Luciole}
+\babelfont{sf}{Luciole}
+\RequirePackage{realscripts}        % Amélioration des indices et exposants
+\babelfont{tt}{IntoneMonoNerdFont}    % Police monospace
+
 
 % HEH Color Definitions
 % Red gradient for logos with depth/shadow effects
@@ -97,4 +108,50 @@
   \end{tikzpicture}%
 }
 
-\endinput
+% Flowchart node styles
+\tikzset{
+  startstop/.style = {
+      rounded rectangle,
+      minimum width=3cm,
+      minimum height=1cm,
+      text centered,
+      draw=black,
+      fill=green!30
+    }
+}
+\tikzset{
+  process/.style = {
+      rectangle,
+      minimum width=3cm,
+      minimum height=1cm,
+      text centered,
+      draw=black,
+      fill=blue!30
+    }
+}
+\tikzset{
+  decision/.style = {
+      diamond,
+      minimum width=3cm,
+      minimum height=1cm,
+      text centered,
+      draw=black,
+      fill=orange!30
+    }
+}
+\tikzset{
+  io/.style = {
+      trapezium,
+      minimum width=3cm,
+      minimum height=1cm,
+      text centered,
+      trapezium left angle=75,
+      trapezium right angle=105,
+      draw=black,
+      fill=purple!30
+    }
+}
+\tikzset{
+arrow/.style = {thick,->,>=Triangle[]}
+}
+

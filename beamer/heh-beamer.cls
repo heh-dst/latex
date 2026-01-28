@@ -40,7 +40,7 @@
 
 % --- Chargement de beamer ---
 % Construction dynamique des options beamer
-\newcommand{\hehbeamer@beameroptions}{12pt,aspectratio=1610,noamssymb}
+\newcommand{\hehbeamer@beameroptions}{aspectratio=1610,noamssymb}
 
 % Ajout conditionnel des options
 \ifhehbeamer@handout
@@ -54,7 +54,6 @@
 % Formatage du document et langue
 \RequirePackage{amsmath}   % Capacités mathématiques étendues
 \PassOptionsToPackage{silent}{fontspec} % Supprime les avertissements de fontspec
-\RequirePackage[french]{babel}     % Support multilingue
 \RequirePackage{booktabs}  % Tableaux de meilleure qualité
 \RequirePackage{enumitem}  % Listes personnalisables
 \RequirePackage{multicol}  % Colonnes multiples
@@ -63,17 +62,6 @@
 
 % --- HEH Common Resources ---
 \RequirePackage{heh-common}  % Shared HEH branding (colors, logo)
-
-% --- Typographie ---
-% \RequirePackage[sfdefault]{roboto}     % Police sans-serif
-% \RequirePackage{roboto-mono}           % Police monospace
-% \RequirePackage[mathrm=sym]{unicode-math} % Gestion des polices mathématiques
-% \setmathfont{Fira Math}                % Police mathématique
-\RequirePackage{luciole-math}       % Police mathématique Luciole
-\babelfont{rm}{Luciole}
-\babelfont{sf}{Luciole}
-\RequirePackage{realscripts}        % Amélioration des indices et exposants
-\babelfont{tt}{IntoneMonoNerdFont}    % Police monospace
 
 % --- Configuration des unités SI ---
 \sisetup{
@@ -100,3 +88,13 @@
 \usefonttheme{heh}
 \useinnertheme{heh}
 \useoutertheme{heh}
+
+\AddToHook{begindocument}{%
+  % Any setup code to run at begin document can go here
+  \AtBeginSection[]{
+    \begin{frame}
+      \frametitle{\insertpart{}}
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+}

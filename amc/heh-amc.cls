@@ -45,8 +45,6 @@
 
 % --- Packages de base ---
 % Formatage du document et langue
-\RequirePackage{amsmath}   % Capacités mathématiques étendues
-\RequirePackage[french]{babel}     % Support multilingue
 \RequirePackage{booktabs}  % Tableaux de meilleure qualité
 \RequirePackage{enumitem}  % Listes personnalisables
 \RequirePackage{graphicx}  % Gestion des images
@@ -55,24 +53,8 @@
 \RequirePackage{siunitx}   % Unités SI
 \RequirePackage{tcolorbox} % Boîtes colorées
 
-% --- Configuration TikZ ---
-\RequirePackage{tikz}
-\usetikzlibrary{calc}
-
 % --- HEH Common Resources ---
 \RequirePackage{heh-common}  % Shared HEH branding (colors, logo)
-
-% --- Typographie ---
-% \RequirePackage[sfdefault]{roboto}     % Police sans-serif
-% \RequirePackage{roboto-mono}           % Police monospace
-% \RequirePackage[mathrm=sym]{unicode-math} % Gestion des polices mathématiques
-% \setmathfont{Fira Math}                % Police mathématique
-\RequirePackage{fontspec}           % Sélection de polices pour LuaLaTeX
-\RequirePackage{luciole-math}       % Police mathématique Luciole
-\babelfont{rm}{Luciole}
-\babelfont{sf}{Luciole}
-\RequirePackage{realscripts}        % Amélioration des indices et exposants
-\babelfont{tt}{IntoneMonoNerdFont}    % Police monospace
 
 % --- Configuration des unités SI ---
 \sisetup{
