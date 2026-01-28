@@ -1,0 +1,91 @@
+% HEH-DST Common Resources Package
+% Provides shared branding elements for all HEH-DST LaTeX documents
+% Author: HEH Department of Sciences and Technologies
+% License: Internal use
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{heh-common}[2026/01/28 v1.0 HEH-DST common resources]
+
+% Required packages
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\RequirePackage{graphicx}
+
+% HEH Color Definitions
+% Red gradient for logos with depth/shadow effects
+\definecolor{heh@red1}{HTML}{911a1a}  % Darkest red
+\definecolor{heh@red2}{HTML}{aa1d1e}
+\definecolor{heh@red3}{HTML}{c5221f}
+\definecolor{heh@red4}{HTML}{de2226}
+\definecolor{heh@red5}{HTML}{cf2223}  % Primary HEH red (use this for branding)
+
+% HEH Blue - primary blue accent
+\definecolor{heh@blue}{RGB}{40, 60, 143}
+
+% HEH Dark gray - for text elements
+\definecolor{heh@dark}{HTML}{383838}
+
+% Backward compatibility: heh@red is an alias for heh@red5
+\colorlet{heh@red}{heh@red5}
+
+% Graphics path configuration
+% When installed to TEXMFHOME, graphics will be in heh-dst/graphics/
+\graphicspath{{graphics/}}
+
+% HEH Logo (TikZ-based, resolution-independent)
+% Usage: \HEHLogo or \HEHLogo[scale=0.8]
+\newcommand{\HEHLogo}[1][1.0]{%
+    \begin{tikzpicture}[scale=#1]
+
+        % HEH letters with gradient depth effect
+        \fill[heh@red1] (0,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
+        \begin{scope}[fill=heh@red2]
+            \clip (3.66,.23) circle[radius=2.97];
+            \fill (0,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
+            \fill (1.14,0) rectangle ++(.91,.23);
+            \fill (1.14,.46) rectangle ++(.69,.23);
+            \fill (1.14,.91) rectangle ++(.91,.23);
+        \end{scope}
+        \begin{scope}[fill=heh@red3]
+            \clip (3.66,.23) circle[radius=2.06];
+            \fill (1.14,0) rectangle ++(.91,.23);
+            \fill (1.14,.46) rectangle ++(.69,.23);
+            \fill (1.14,.91) rectangle ++(.91,.23);
+            \fill (2.29,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
+        \end{scope}
+        \begin{scope}[fill=heh@red4]
+            \clip (3.66,.23) circle[radius=1.26];
+            \fill (2.29,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
+        \end{scope}
+
+        % "be" accent mark
+        \fill[heh@dark] (3.43,.46) rectangle ++(.07,.69);
+        \fill[heh@dark] (3.66,.69) circle[radius=.23];
+        \fill[white] (3.66,.69) circle[radius=.16];
+        \fill[white] (3.51,.54) circle[radius=.17];
+        \fill[heh@red5] (3.51,.54) circle[radius=.09];
+        \fill[heh@dark] (4.43,.69) arc[radius=.23,start angle=0,end angle=315] -- (4.2,.69) -- cycle;
+        \fill[white] (4.2,.69) circle[radius=.16];
+        \begin{scope}[fill=heh@dark]
+            \clip (4.2,.69) circle[radius=.23];
+            \fill (3.97,.65) rectangle ++(.46,.07);
+        \end{scope}
+
+        % Department text (requires Roboto font to be loaded)
+        \IfFontExistsTF{Roboto}{%
+            \newfontfamily\hehrobotofont{Roboto}
+            \node[anchor=base west,inner sep=0pt,node font=\hehrobotofont,text=heh@dark] at (3.43,0) {Sciences};
+            \node[anchor=base west,inner sep=0pt,node font=\hehrobotofont,text=heh@dark] (techno) at (3.43,-.36) {et technologies};
+        }{%
+            % Fallback if Roboto is not available
+            \node[anchor=base west,inner sep=0pt,font=\sffamily\small,text=heh@dark] at (3.43,0) {Sciences};
+            \node[anchor=base west,inner sep=0pt,font=\sffamily\small,text=heh@dark] (techno) at (3.43,-.36) {et technologies};
+        }
+
+        \pgfresetboundingbox
+        \useasboundingbox (0,1.14) rectangle (techno.south east);
+    \end{tikzpicture}%
+}
+
+\endinput

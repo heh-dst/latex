@@ -59,6 +59,9 @@
 \RequirePackage{tikz}
 \usetikzlibrary{calc}
 
+% --- HEH Common Resources ---
+\RequirePackage{heh-common}  % Shared HEH branding (colors, logo)
+
 % --- Typographie ---
 % \RequirePackage[sfdefault]{roboto}     % Police sans-serif
 % \RequirePackage{roboto-mono}           % Police monospace
@@ -127,59 +130,15 @@
 \newcommand{\DurationExtra}[1]{\renewcommand{\hehamc@durationextra}{#1}}
 
 % Page de couverture
-\definecolor{hehamc@red1}{HTML}{911a1a}
-\definecolor{hehamc@red2}{HTML}{aa1d1e}
-\definecolor{hehamc@red3}{HTML}{c5221f}
-\definecolor{hehamc@red4}{HTML}{de2226}
-\definecolor{hehamc@red5}{HTML}{cf2223}
-\definecolor{hehamc@dark}{HTML}{383838}
-\newfontfamily\robotofont{Roboto}
+% Colors and \HEHLogo now provided by heh-common package
 
-\newcommand{\HEHLogo}{%
-    \begin{tikzpicture}
-
-        % HEH
-        \fill[hehamc@red1] (0,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
-        \begin{scope}[fill=hehamc@red2]
-            \clip (3.66,.23) circle[radius=2.97];
-            \fill (0,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
-            \fill (1.14,0) rectangle ++(.91,.23);
-            \fill (1.14,.46) rectangle ++(.69,.23);
-            \fill (1.14,.91) rectangle ++(.91,.23);
-        \end{scope}
-        \begin{scope}[fill=hehamc@red3]
-            \clip (3.66,.23) circle[radius=2.06];
-            \fill (1.14,0) rectangle ++(.91,.23);
-            \fill (1.14,.46) rectangle ++(.69,.23);
-            \fill (1.14,.91) rectangle ++(.91,.23);
-            \fill (2.29,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
-        \end{scope}
-        \begin{scope}[fill=hehamc@red4]
-            \clip (3.66,.23) circle[radius=1.26];
-            \fill (2.29,0) |- ++(.23,1.14) |- ++(.46,-.46) |- ++(.23,.46) |- ++(-.23,-1.14) |- ++(-.46,.46) -- ++(0,-.46) -- cycle;
-        \end{scope}
-
-        % be
-        \fill[hehamc@dark] (3.43,.46) rectangle ++(.07,.69);
-        \fill[hehamc@dark] (3.66,.69) circle[radius=.23];
-        \fill[white] (3.66,.69) circle[radius=.16];
-        \fill[white] (3.51,.54) circle[radius=.17];
-        \fill[hehamc@red5] (3.51,.54) circle[radius=.09];
-        \fill[hehamc@dark] (4.43,.69) arc[radius=.23,start angle=0,end angle=315] -- (4.2,.69) -- cycle;
-        \fill[white] (4.2,.69) circle[radius=.16];
-        \begin{scope}[fill=hehamc@dark]
-            \clip (4.2,.69) circle[radius=.23];
-            \fill (3.97,.65) rectangle ++(.46,.07);
-        \end{scope}
-
-        % Département des Sciences et Technologies
-        \node[anchor=base west,inner sep=0pt,node font=\robotofont,text=hehamc@dark] at (3.43,0) {Sciences};
-        \node[anchor=base west,inner sep=0pt,node font=\robotofont,text=hehamc@dark] (techno) at (3.43,-.36) {et technologies};
-
-        \pgfresetboundingbox
-        \useasboundingbox (0,1.14) rectangle (techno.south east);
-    \end{tikzpicture}
-}
+% Backward compatibility: create aliases for old color names
+\colorlet{hehamc@red1}{heh@red1}
+\colorlet{hehamc@red2}{heh@red2}
+\colorlet{hehamc@red3}{heh@red3}
+\colorlet{hehamc@red4}{heh@red4}
+\colorlet{hehamc@red5}{heh@red5}
+\colorlet{hehamc@dark}{heh@dark}
 
 \newcommand{\Instructions}{%
     \begin{itemize}[itemsep=0.5em]

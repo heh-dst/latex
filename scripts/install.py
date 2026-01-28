@@ -230,6 +230,20 @@ def main():
     extract_amc_sty(repo_root, texmf_home)
     print()
 
+    # Install HEH common resources
+    print("Installing HEH common resources...")
+    common_sty_src = repo_root / "common" / "heh-common.sty"
+    common_sty_dest = texmf_home / "tex" / "latex" / "heh-dst" / "heh-common.sty"
+    copy_file(common_sty_src, common_sty_dest, "heh-common package")
+    print()
+
+    # Install shared graphics
+    print("Installing shared graphics...")
+    graphics_src = repo_root / "common" / "graphics"
+    graphics_dest = texmf_home / "tex" / "latex" / "heh-dst" / "graphics"
+    copy_directory(graphics_src, graphics_dest, "HEH shared graphics")
+    print()
+
     # Install AMC class
     print("Installing AMC class...")
     amc_src = repo_root / "amc" / "heh-amc.cls"

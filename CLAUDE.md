@@ -4,13 +4,35 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This repository contains LaTeX class files and templates adapted to the HEH Department of Sciences and Technologies (DST) graphic charter. It provides three main components:
+This repository contains LaTeX class files and templates adapted to the HEH Department of Sciences and Technologies (DST) graphic charter. It provides four main components:
+- **common**: Shared branding resources (colors, logos) used by all document types
 - **amc**: Custom class for Auto Multiple Choice exams
 - **beamer**: Presentation theme for slides with student handouts and teacher notes
 - **syllabus**: Template for course syllabi documents
 - **fonts**: Custom fonts (Luciole, IntoneMonoNerdFont) for HEH branding
 
 ## Architecture
+
+### Shared Resources ([`common/`](common/))
+
+The repository uses a centralized approach for HEH branding elements:
+
+**[`common/heh-common.sty`](common/heh-common.sty)** - Shared LaTeX package providing:
+- **HEH color palette**:
+  - `heh@red5` - Primary HEH red (#cf2223) - use for branding, structure, alerts
+  - `heh@red1-4` - Red gradient for depth effects in logos
+  - `heh@blue` - Primary HEH blue (RGB 40, 60, 143)
+  - `heh@dark` - Dark gray for text (#383838)
+  - `heh@red` - Alias for `heh@red5` (backward compatibility)
+- **`\HEHLogo[scale]`** - Resolution-independent TikZ-based HEH logo
+- **Graphics path** - Automatic resolution of shared PNG resources
+
+**[`common/graphics/`](common/graphics/)** - Shared PNG logo files:
+- `logo-heh-dst.png` - Main HEH Department logo
+- `logo-pole-hainuyer.png` - Pole Hainuyer partner logo
+- `logo-wbe.png` - WBE partner logo
+
+All document types load this package to ensure consistent branding. See [common/README.md](common/README.md) for detailed usage examples.
 
 ### Beamer Structure
 
@@ -24,7 +46,7 @@ Content is separated from presentation format through a modular architecture:
 2. **Theme files** ([`beamer/styles/`](beamer/styles/)):
    - [`beamerthemeheh.sty`](beamer/styles/beamerthemeheh.sty) - Main theme loader (imports color, font, inner, outer themes)
    - Modular theme components: `beamercolorthemeheh.sty`, `beamerfontthemeheh.sty`, `beamerinnerthemeheh.sty`, `beamerouterthemeheh.sty`
-   - Graphic resources (logos, etc.)
+   - **Branding**: Colors and logos provided by `heh-common` package
 
 3. **Content files** (`*_content.tex`):
    - Contains pedagogical content with `\section` and `\begin{frame}...\end{frame}` blocks
@@ -44,7 +66,8 @@ Content is separated from presentation format through a modular architecture:
 - **Options**:
   - `catalog` - Enable catalog mode
   - `noshuffle` - Disable question shuffling
-- **Dependencies**: Loads amsmath, babel[french], booktabs, fontspec, and more
+- **Dependencies**: Loads `heh-common`, amsmath, babel[french], booktabs, fontspec, automultiplechoice, and more
+- **Branding**: Uses `\HEHLogo` from `heh-common` on cover page; maintains backward-compatible color aliases (`hehamc@red*`)
 
 ### Syllabus Template
 
@@ -52,7 +75,8 @@ Content is separated from presentation format through a modular architecture:
 - **Base class**: `scrartcl` (KOMA-Script article, 12pt, a4paper, French)
 - **Main document**: [`document.tex`](syllabus/document.tex) contains preamble and includes [`content.tex`](syllabus/content.tex)
 - **Fonts**: Roboto (sans-serif), Roboto Mono (monospace), Fira Math (mathematics)
-- **Packages**: amsmath, tikz, pgfplots, siunitx, hyperref, polyglossia
+- **Packages**: amsmath, tikz, pgfplots, siunitx, hyperref, polyglossia, `heh-common`
+- **Branding**: Uses HEH blue for hyperlinks; optional HEH red for section headings; can include `\HEHLogo` on title page
 
 ## Installation
 
@@ -70,9 +94,12 @@ This script automatically:
    - Automatically processes the `.dtx.in` source file
    - Extracts version information from ChangeLog
    - Allows LaTeX compilation without AMC binaries (useful on Windows without devcontainer)
-3. Installs the `heh-amc.cls` class
-4. Installs custom fonts (Luciole, IntoneMonoNerdFont)
-5. Installs required packages (`realscripts`) if not already present
+3. **Installs shared HEH branding resources**:
+   - `heh-common.sty` - Shared color and logo package
+   - PNG graphics (logos) to `TEXMFHOME/tex/latex/heh-dst/graphics/`
+4. Installs the `heh-amc.cls` class
+5. Installs custom fonts (Luciole, IntoneMonoNerdFont)
+6. Installs required packages (`realscripts`) if not already present
 
 The script is **cross-platform** (Linux, Windows, macOS) and only updates files that have changed (rsync-like behavior).
 
