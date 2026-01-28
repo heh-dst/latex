@@ -251,6 +251,13 @@ def main():
     copy_file(amc_src, amc_dest, "heh-amc class")
     print()
 
+    # Install beamer files
+    print("Installing beamer files...")
+    beamer_src = repo_root / "beamer"
+    beamer_dest = texmf_home / "tex" / "latex" / "heh-dst"
+    copy_directory(beamer_src, beamer_dest, "heh-beamer files")
+    print()
+
     # Install fonts
     print("Installing fonts...")
 
