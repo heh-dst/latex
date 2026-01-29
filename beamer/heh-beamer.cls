@@ -55,7 +55,6 @@
 \RequirePackage{amsmath}   % Capacités mathématiques étendues
 \PassOptionsToPackage{silent}{fontspec} % Supprime les avertissements de fontspec
 \RequirePackage{booktabs}  % Tableaux de meilleure qualité
-\RequirePackage{enumitem}  % Listes personnalisables
 \RequirePackage{multicol}  % Colonnes multiples
 \RequirePackage{siunitx}   % Unités SI
 \RequirePackage{tcolorbox} % Boîtes colorées
