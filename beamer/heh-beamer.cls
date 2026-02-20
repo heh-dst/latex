@@ -5,7 +5,7 @@
 % conformes à la charte graphique du DST de la HEH.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{heh-beamer}[2026/01/28 v0.0.1 Classe beamer pour la HEH]
+\ProvidesClass{heh-beamer}[2026/02/19 v0.0.2 Classe beamer pour la HEH]
 
 % --- Vérification du moteur de compilation ---
 % Le package requiert LuaLaTeX pour fontspec et les polices OpenType
@@ -49,6 +49,10 @@
 
 % Charge la classe de base beamer
 \LoadClass[\hehbeamer@beameroptions]{beamer}
+
+% S'assure que les traductions françaises sont utilisées
+\uselanguage{French}
+\languagepath{French}
 
 % --- Packages de base ---
 % Formatage du document et langue
