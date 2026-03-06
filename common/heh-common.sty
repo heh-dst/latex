@@ -18,11 +18,13 @@
 
 % --- Typographie ---
 \RequirePackage{fontspec}           % Sélection de polices pour LuaLaTeX
-\RequirePackage{luciole-math}       % Police mathématique Luciole
-\babelfont{rm}{Luciole}
-\babelfont{sf}{Luciole}
-\RequirePackage{realscripts}        % Amélioration des indices et exposants
-\babelfont{tt}{IntoneMonoNerdFont}    % Police monospace
+\RequirePackage{unicode-math}           % Sélection de polices pour LuaLaTeX
+\setsansfont{IBMPlexSans}[Ligatures={Contextual,Tex},Numbers=SlashedZero] % Police sans-serif IBM Plex Sans (pour le texte principal)
+%\setsansfont{FiraGO}[Numbers = {SlashedZero}] % Police sans-serif Fira GO (pour le texte principal)
+\setmonofont{FiraCode} % Police monospace Fira Code (pour code et tableaux)
+%\setmonofont{IntoneMonoNerdFont} % Police monospace Intone Mono Nerd Font (pour code et tableaux)
+\setmathfont{STIXTwoMath} % Police mathématique STIX Two
+\renewcommand{\familydefault}{\sfdefault} % Utilise la police sans-serif par défaut pour tout le document
 
 
 % HEH Color Definitions

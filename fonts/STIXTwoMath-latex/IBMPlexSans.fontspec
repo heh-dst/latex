@@ -1,0 +1,4 @@
+\defaultfontfeatures[STIX Two Math]{
+  Extension = {.otf},
+  UprightFont = {*-Regular},
+}

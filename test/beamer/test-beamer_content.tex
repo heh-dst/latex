@@ -1,7 +1,8 @@
 % !TEX root = test-beamer_notes.tex
 
-\title{Titre long}
+\title{Titre de la présentation}
 \author{François Roland}
+\date{1970--01--01}
 
 \begin{document}
 
@@ -13,12 +14,56 @@
 
 \begin{frame}
   \frametitle{Test Frame}
-  Contenu de test avec itemize:
+  Contenu de test avec \frquote{itemize}:
   \begin{itemize}
     \item Premier élément
     \item Deuxième élément
   \end{itemize}
+
+  Figure-toi qu'une ligature doit être présente ici: fi fl ffi ffl
+
+  Texte en \textbf{gras} et \textit{italique} ou \textbf{\textit{les deux}}\\
+  \alert{Texte d'alerte en \textbf{gras} et \textit{italique} ou \textbf{\textit{les deux}}}
   \note{Note pour le professeur.}
+\end{frame}
+
+\section{Deuxième section}
+
+\begin{frame}[fragile]
+  \frametitle{Test police monospace}
+  Contenu en police monospace pour tester la police de code
+
+  \vfill{}
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Sans sérif~:}
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ \\
+      abcdefghijklmnopqrstuvwxyz \\
+      0123456789 \\
+      1iILl 0Oo \\
+      "" '' `` () \{\} []
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \texttt{\textbf{Monospace~:}}
+      \texttt{ABCDEFGHIJKLMNOPQRSTUVWXYZ}\\
+      \texttt{abcdefghijklmnopqrstuvwxyz}\\
+      \texttt{0123456789}\\
+      \texttt{1iILl 0Oo}\\
+      \texttt{"" '' `` () \{\} []}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Test mathématique}
+  Contenu mathématique pour tester la police mathématique:
+  \[
+    E = mc^2
+  \]
+  \[
+    \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+  \]
 \end{frame}
 
 \end{document}

@@ -261,9 +261,57 @@ def main():
     # Install fonts
     print("Installing fonts...")
 
-    # Luciole fonts
     fonts_installed: list[str] = []
 
+    # Fira Code fonts
+    FiraCode_latex_src = repo_root / "fonts" / "FiraCode-latex"
+    FiraCode_latex_dest = texmf_home / "tex" / "latex" / "FiraCode"
+    if copy_directory(
+        FiraCode_latex_src, FiraCode_latex_dest, "Fira Code LaTeX support"
+    ):
+        fonts_installed.append("FiraCode")
+
+    FiraCode_truetype_src = repo_root / "fonts" / "FiraCode-truetype"
+    FiraCode_truetype_dest = texmf_home / "fonts" / "truetype" / "public" / "FiraCode"
+    copy_directory(
+        FiraCode_truetype_src,
+        FiraCode_truetype_dest,
+        "Fira Code TrueType fonts",
+    )
+
+    # FiraGO fonts
+    FiraGO_latex_src = repo_root / "fonts" / "FiraGO-latex"
+    FiraGO_latex_dest = texmf_home / "tex" / "latex" / "FiraGO"
+    if copy_directory(FiraGO_latex_src, FiraGO_latex_dest, "FiraGO LaTeX support"):
+        fonts_installed.append("FiraGO")
+
+    FiraGO_opentype_src = repo_root / "fonts" / "FiraGO-opentype"
+    FiraGO_opentype_dest = texmf_home / "fonts" / "opentype" / "public" / "FiraGO"
+    copy_directory(
+        FiraGO_opentype_src,
+        FiraGO_opentype_dest,
+        "FiraGO OpenType fonts",
+    )
+
+    # IBM Plex Sans fonts
+    IBMPlexSans_latex_src = repo_root / "fonts" / "IBMPlexSans-latex"
+    IBMPlexSans_latex_dest = texmf_home / "tex" / "latex" / "IBMPlexSans"
+    if copy_directory(
+        IBMPlexSans_latex_src, IBMPlexSans_latex_dest, "IBM Plex Sans LaTeX support"
+    ):
+        fonts_installed.append("IBMPlexSans")
+
+    IBMPlexSans_opentype_src = repo_root / "fonts" / "IBMPlexSans-opentype"
+    IBMPlexSans_opentype_dest = (
+        texmf_home / "fonts" / "opentype" / "public" / "IBMPlexSans"
+    )
+    copy_directory(
+        IBMPlexSans_opentype_src,
+        IBMPlexSans_opentype_dest,
+        "IBM Plex Sans OpenType fonts",
+    )
+
+    # Luciole fonts
     luciole_latex_src = repo_root / "fonts" / "luciole-latex"
     luciole_latex_dest = texmf_home / "tex" / "latex" / "luciole"
     if copy_directory(luciole_latex_src, luciole_latex_dest, "Luciole LaTeX support"):
@@ -295,6 +343,20 @@ def main():
     )
     copy_directory(
         intone_truetype_src, intone_truetype_dest, "IntoneMonoNerdFont TrueType fonts"
+    )
+
+    # STIX Two Math
+    intone_latex_src = repo_root / "fonts" / "STIXTwoMath-latex"
+    intone_latex_dest = texmf_home / "tex" / "latex" / "STIXTwoMath"
+    if copy_directory(
+        intone_latex_src, intone_latex_dest, "STIX Two Math LaTeX support"
+    ):
+        fonts_installed.append("STIX Two Math")
+
+    intone_opentype_src = repo_root / "fonts" / "STIXTwoMath-opentype"
+    intone_opentype_dest = texmf_home / "fonts" / "opentype" / "public" / "STIXTwoMath"
+    copy_directory(
+        intone_opentype_src, intone_opentype_dest, "STIX Two Math OpenType fonts"
     )
 
     print()
