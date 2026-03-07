@@ -7,8 +7,8 @@
 \ProvidesPackage{heh-common}[2026/01/28 v1.0 HEH-DST common resources]
 
 % Required packages
-\RequirePackage{amsmath}   % Capacités mathématiques étendues
-\RequirePackage[french]{babel}     % Support multilingue
+\RequirePackage{amsmath} % Capacités mathématiques étendues
+\RequirePackage[french]{babel} % Support multilingue
 \RequirePackage{xcolor}
 \RequirePackage{tikz}
 \usetikzlibrary{arrows,arrows.meta,calc,positioning,shapes.geometric,shapes.misc}
@@ -17,23 +17,21 @@
 \pgfplotsset{compat=1.18}
 
 % --- Typographie ---
-\RequirePackage{fontspec}           % Sélection de polices pour LuaLaTeX
-\RequirePackage{unicode-math}           % Sélection de polices pour LuaLaTeX
+\RequirePackage{fontspec} % Sélection de polices pour LuaLaTeX
+\RequirePackage{unicode-math} % Sélection de polices pour LuaLaTeX
 \setsansfont{IBMPlexSans}[Ligatures={Contextual,Tex},Numbers=SlashedZero] % Police sans-serif IBM Plex Sans (pour le texte principal)
-%\setsansfont{FiraGO}[Numbers = {SlashedZero}] % Police sans-serif Fira GO (pour le texte principal)
 \setmonofont{FiraCode} % Police monospace Fira Code (pour code et tableaux)
-%\setmonofont{IntoneMonoNerdFont} % Police monospace Intone Mono Nerd Font (pour code et tableaux)
 \setmathfont{STIXTwoMath} % Police mathématique STIX Two
 \renewcommand{\familydefault}{\sfdefault} % Utilise la police sans-serif par défaut pour tout le document
 
 
 % HEH Color Definitions
 % Red gradient for logos with depth/shadow effects
-\definecolor{heh@red1}{HTML}{911a1a}  % Darkest red
+\definecolor{heh@red1}{HTML}{911a1a} % Darkest red
 \definecolor{heh@red2}{HTML}{aa1d1e}
 \definecolor{heh@red3}{HTML}{c5221f}
 \definecolor{heh@red4}{HTML}{de2226}
-\definecolor{heh@red5}{HTML}{cf2223}  % Primary HEH red (use this for branding)
+\definecolor{heh@red5}{HTML}{cf2223} % Primary HEH red (use this for branding)
 
 % HEH Blue - primary blue accent
 \definecolor{heh@blue}{RGB}{40, 60, 143}
