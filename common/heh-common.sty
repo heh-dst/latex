@@ -19,9 +19,8 @@
 % --- Typographie ---
 \RequirePackage{fontspec} % Sélection de polices pour LuaLaTeX
 \RequirePackage{unicode-math} % Sélection de polices pour LuaLaTeX
-\defaultfontfeatures+[\sffamily]{Ligatures=Contextual,Numbers=SlashedZero} % Caractères typographiques améliorés pour les polices sans-serif
-\setsansfont{IBMPlexSans} % Police sans-serif IBM Plex Sans (pour le texte principal)
-\setmonofont{FiraCode} % Police monospace Fira Code (pour code et tableaux)
+\setsansfont{IBMPlexSans}[Numbers=SlashedZero] % Police sans-serif IBM Plex Sans (pour le texte principal)
+\setmonofont{FiraCode}[Contextuals=AlternateOff] % Police monospace Fira Code (pour code et tableaux)
 \setmathfont{STIXTwoMath} % Police mathématique STIX Two
 \renewcommand{\familydefault}{\sfdefault} % Utilise la police sans-serif par défaut pour tout le document
 
