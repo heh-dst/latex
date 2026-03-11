@@ -1,0 +1,23 @@
+pdf-engine: lualatex
+shift-heading-level-by: -1
+tab-stop: 2
+variables:
+  author: François Roland
+  documentclass: scrartcl
+  lang: fr
+  fontsize: 10pt
+  geometry:
+    - margin=2cm
+  hyperrefoptions:
+    - pdfpagemode=UseNone
+  mainfont: IBMPlexSans
+  mainfontoptions:
+    - Numbers=SlashedZero
+  mathfont: STIXTwoMath
+  monofont: FiraCode
+  monofontoptions:
+    - Contextuals=AlternateOff
+  papersize: a4
+  pdfstandard:
+    - ua-2
+    - a-4f

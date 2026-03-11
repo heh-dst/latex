@@ -4,6 +4,7 @@ Installation script for HEH-DST LaTeX classes and fonts.
 Works on Linux, Windows, and macOS.
 """
 
+import os
 import re
 import shutil
 import subprocess
@@ -375,6 +376,14 @@ def main():
             print("  ✓ realscripts installed")
         else:
             print("  ⚠ Could not install realscripts")
+    print()
+
+    # Install pandoc files
+    print("Installing pandoc files...")
+    pandoc_src = repo_root / "pandoc"
+    appdata = os.environ.get("APPDATA")
+    pandoc_dest = Path(appdata) / "pandoc" if appdata else Path.home() / ".pandoc"
+    copy_directory(pandoc_src, pandoc_dest, "pandoc files")
     print()
 
     print("=" * 80)
