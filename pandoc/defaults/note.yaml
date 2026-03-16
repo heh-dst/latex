@@ -5,7 +5,7 @@ variables:
   author: François Roland
   documentclass: scrartcl
   lang: fr
-  fontsize: 10pt
+  fontsize: 11pt
   geometry:
     - margin=2cm
   hyperrefoptions:
