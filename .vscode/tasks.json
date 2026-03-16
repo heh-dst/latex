@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install",
+      "command": "python3 ${workspaceFolder}/scripts/install.py",
+      "type": "shell",
+      "args": [],
+      "presentation": {
+        "reveal": "always",
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true,
+      },
+    },
+  ],
+}
