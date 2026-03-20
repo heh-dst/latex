@@ -124,30 +124,32 @@
 
 \newcommand{\Instructions}{%
   \begin{itemize}[itemsep=0.5em]
-    \item \textbf{Durée maximale~:}
+    \item \textbf{Durée maximale}
           \begin{itemize}[noitemsep]
             \item \hehamc@duration{}
-            \item \hehamc@durationextra{} si tiers temps inclus dans le PAI % chktex 13
+            \item Durée avec aménagement tiers temps~: \hehamc@durationextra{} % chktex 13
           \end{itemize}
-    \item \textbf{Notation~:}
+    \item \textbf{Notation}
           \begin{itemize}[noitemsep]
-            \item Chaque réponse correcte = \textbf{1~point}
-            \item Pas de point négatif pour les erreurs
+            \item Chaque réponse correcte = \textbf{1~point}.
+            \item Question non répondue ou mal encodée = \textbf{0~point}.
+            \item Pas de point négatif pour les erreurs.
+            \item \textbf{Répondez à toutes les questions}, même en cas de doute.
           \end{itemize}
-    \item \textbf{Format des questions~:}
+    \item \textbf{Format des questions à choix multiples}
           \begin{itemize}[noitemsep]
-            \item Une seule réponse correcte par question
+            \item \textbf{Une seule} case à cocher par question
             \item 4 propositions spécifiques + 2 propositions générales~:
                   \begin{itemize}[noitemsep]
                     \item \textbf{aucune} = aucune proposition spécifique n'est correcte
                     \item \textbf{toutes} = toutes les propositions spécifiques sont correctes
                   \end{itemize}
           \end{itemize}
-    \item \textbf{Remise~:}
+    \item \textbf{Remise}
           \begin{itemize}[noitemsep]
-            \item Remettez toutes les feuilles de l'examen
-            \item Seule la feuille de réponse sera corrigée
+            \item Seule la \textbf{feuille de réponse} sera corrigée
             \item Utilisez les feuilles de question comme brouillon
+            \item \textbf{Toutes les feuilles} doivent être remises en fin d'examen
           \end{itemize}
   \end{itemize}
 }
