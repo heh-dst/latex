@@ -5,9 +5,10 @@ variables:
   author: François Roland
   documentclass: scrartcl
   lang: fr
-  fontsize: 11pt
   geometry:
-    - margin=2cm
+    - top=2cm
+    - left=2cm
+    - heightrounded
   hyperrefoptions:
     - pdfpagemode=UseNone
   mainfont: IBMPlexSans
@@ -20,4 +21,3 @@ variables:
   papersize: a4
   pdfstandard:
     - ua-2
-    - a-4f
