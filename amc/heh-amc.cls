@@ -126,29 +126,28 @@
   \begin{itemize}[itemsep=0.5em]
     \item \textbf{Durée maximale~:}
           \begin{itemize}[noitemsep]
-            \item \hehamc@duration{}.
-            \item \hehamc@durationextra{} si tiers temps inclus dans le PAI. % chktex 13
+            \item \hehamc@duration{}
+            \item \hehamc@durationextra{} si tiers temps inclus dans le PAI % chktex 13
           \end{itemize}
     \item \textbf{Notation~:}
           \begin{itemize}[noitemsep]
-            \item Chaque réponse correcte = \textbf{1~point}.
-            \item Pas de point négatif pour les erreurs.
+            \item Chaque réponse correcte = \textbf{1~point}
+            \item Pas de point négatif pour les erreurs
           \end{itemize}
     \item \textbf{Format des questions~:}
           \begin{itemize}[noitemsep]
-            \item 4 propositions spécifiques et 2 propositions générales.
-            \item Une seule réponse correcte par question.
-          \end{itemize}
-    \item \textbf{Propositions générales~:}
-          \begin{itemize}[noitemsep]
-            \item \textbf{aucune} = aucune proposition spécifique n'est correcte.
-            \item \textbf{toutes} = toutes les propositions spécifiques sont correctes.
+            \item Une seule réponse correcte par question
+            \item 4 propositions spécifiques + 2 propositions générales~:
+                  \begin{itemize}[noitemsep]
+                    \item \textbf{aucune} = aucune proposition spécifique n'est correcte
+                    \item \textbf{toutes} = toutes les propositions spécifiques sont correctes
+                  \end{itemize}
           \end{itemize}
     \item \textbf{Remise~:}
           \begin{itemize}[noitemsep]
-            \item Remettez toutes les feuilles de l'examen.
-            \item Seule la feuille de réponse sera corrigée.
-            \item Utilisez les feuilles de question comme brouillon.
+            \item Remettez toutes les feuilles de l'examen
+            \item Seule la feuille de réponse sera corrigée
+            \item Utilisez les feuilles de question comme brouillon
           \end{itemize}
   \end{itemize}
 }
