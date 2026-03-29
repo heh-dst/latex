@@ -128,9 +128,7 @@ def extract_amc_sty(repo_root: Path, texmf_home: Path) -> bool:
         return True
 
     # Check if we already installed it
-    amc_user_dest = (
-        texmf_home / "tex" / "latex" / "automultiplechoice" / "automultiplechoice.sty"
-    )
+    amc_user_dest = texmf_home / "tex" / "latex" / "AMC" / "automultiplechoice.sty"
     if amc_user_dest.exists():
         print(f"  → AMC already installed (user): {amc_user_dest}")
         return True
