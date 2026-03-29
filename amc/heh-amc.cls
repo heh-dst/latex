@@ -162,18 +162,26 @@
 
 \newcommand{\CoverPage}{%
   \setcounter{figure}{0} % Remet à zéro le compteur de figures
-  \HEHLogo{}
+  \ifhehamc@separateanswersheet \else
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}@{}lr@{}}
+      \namefield{\tcbox[colback=white,title=Nom et prénom,title filled]{\begin{minipage}{.50\linewidth}\vspace{1cm}\hfill\end{minipage}}} &
+      \tcbox[bottomtitle=3pt,colback=white,title=Date,title filled]{\begin{minipage}{.325\linewidth}\vspace{1cm}\hfill\end{minipage}}
+    \end{tabular*}
 
-  \vspace{1em}
+    \vspace{1em}
+  \fi
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}@{}lr@{}}
+    \HEHLogo{} & \shortstack[r]{\textbf{\hehamc@examtitle{}} \\ \textbf{\hehamc@cohort{}}} \\
+  \end{tabular*}
 
-  \textbf{\hehamc@examtitle{} \hfill{} \hehamc@cohort{}}
-
-  \vspace{1em}
-
-  \section*{Consignes}
+  \ifhehamc@separateanswersheet
+    \section*{Consignes}
+  \fi
 
   \begin{tcolorbox}
-    \textbf{Ne tournez pas cette page avant d'en avoir reçu l'autorisation.}
+    \begin{center}
+      \textbf{Ne tournez pas cette page avant d'en avoir reçu l'autorisation~!}
+    \end{center}
   \end{tcolorbox}
 
   \Instructions{}
