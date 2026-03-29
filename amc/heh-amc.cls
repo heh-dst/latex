@@ -25,12 +25,14 @@
 
 % --- Options du package ---
 % Booléens pour contrôler le comportement d'AMC
-\newif\ifhehamc@catalog      \hehamc@catalogfalse
-\newif\ifhehamc@noshuffle    \hehamc@noshufflefalse
+\newif\ifhehamc@catalog \hehamc@catalogfalse
+\newif\ifhehamc@noshuffle \hehamc@noshufflefalse
+\newif\ifhehamc@separateanswersheet \hehamc@separateanswersheetfalse
 
 % Déclaration des options
 \DeclareOption{catalog}{\hehamc@catalogtrue}
 \DeclareOption{noshuffle}{\hehamc@noshuffletrue}
+\DeclareOption{separateanswersheet}{\hehamc@separateanswersheettrue}
 
 % Avertissement pour options inconnues
 \DeclareOption*{%
@@ -50,17 +52,10 @@
 \RequirePackage{graphicx}  % Gestion des images
 \RequirePackage{multicol}  % Colonnes multiples
 \RequirePackage{setspace}  % Espacement des lignes
-\RequirePackage{siunitx}   % Unités SI
 \RequirePackage{tcolorbox} % Boîtes colorées
 
 % --- HEH Common Resources ---
 \RequirePackage{heh-common}  % Shared HEH branding (colors, logo)
-
-% --- Configuration des unités SI ---
-\sisetup{
-  locale=FR,                     % Locale française (séparateur décimal virgule)
-  per-mode=fraction              % Utiliser des fractions pour les unités
-}
 
 % --- Formatage du texte ---
 \onehalfspacing{}                  % Espacement 1,5 ligne
@@ -68,7 +63,7 @@
 
 % --- Chargement d'Auto Multiple Choice ---
 % Construction dynamique des options AMC
-\newcommand{\hehamc@amcoptions}{asbox,box,lang=FR,separateanswersheet}
+\newcommand{\hehamc@amcoptions}{box,lang=FR}
 
 % Ajout conditionnel des options
 \ifhehamc@catalog
@@ -76,6 +71,9 @@
 \fi
 \ifhehamc@noshuffle
   \edef\hehamc@amcoptions{\hehamc@amcoptions,noshuffle,noshufflegroups}
+\fi
+\ifhehamc@separateanswersheet
+  \edef{\hehamc@amcoptions}{\hehamc@amcoptions,asbox,separateanswersheet}
 \fi
 
 % Chargement du package AMC avec les options construites
@@ -144,11 +142,19 @@
                     \item \textbf{aucune} = aucune proposition spécifique n'est correcte
                     \item \textbf{toutes} = toutes les propositions spécifiques sont correctes
                   \end{itemize}
+                  \ifhehamc@separateanswersheet \else
+            \item Utilisez un stylo-bille \textbf{bleu standard} ou \textbf{noir}, non-effaçable
+            \item \textbf{Noircissez complètement} la case de votre choix.
+            \item \textbf{Effacez} vos erreurs avec un \textbf{correcteur} liquide ou en ruban
+            \item \textbf{Ne redessinez jamais} les cases
+                  \fi
           \end{itemize}
     \item \textbf{Remise}
           \begin{itemize}[noitemsep]
+            \ifhehamc@separateanswersheet
             \item Seule la \textbf{feuille de réponse} sera corrigée
-            \item Utilisez les feuilles de question comme brouillon
+                  \fi
+            \item Utilisez le \textbf{verso} des feuilles de question comme \textbf{brouillon}
             \item \textbf{Toutes les feuilles} doivent être remises en fin d'examen
           \end{itemize}
   \end{itemize}
@@ -175,40 +181,42 @@
   \clearpage{}
 } % Fin de la commande \CoverPage
 
-\newcommand{\AnswerSheet}{%
-  \AMCformBegin{}%
-  \textbf{\hehamc@examtitle{} \hfill{} \hehamc@cohort{}}
+\ifhehamc@separateanswersheet
+  \newcommand{\AnswerSheet}{%
+    \AMCformBegin{}%
+    \textbf{\hehamc@examtitle{} \hfill{} \hehamc@cohort{}}
 
-  \vspace{1em}
+    \vspace{1em}
 
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}@{}lr@{}}
-    \namefield{\tcbox[colback=white,title=Nom et prénom,title filled]{\begin{minipage}{.50\linewidth}\vspace{1cm}\hfill\end{minipage}}} &
-    \tcbox[bottomtitle=3pt,colback=white,title=Date,title filled]{\begin{minipage}{.325\linewidth}\vspace{1cm}\hfill\end{minipage}}
-  \end{tabular*}
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}@{}lr@{}}
+      \namefield{\tcbox[colback=white,title=Nom et prénom,title filled]{\begin{minipage}{.50\linewidth}\vspace{1cm}\hfill\end{minipage}}} &
+      \tcbox[bottomtitle=3pt,colback=white,title=Date,title filled]{\begin{minipage}{.325\linewidth}\vspace{1cm}\hfill\end{minipage}}
+    \end{tabular*}
 
-  \section*{Réponses}
+    \section*{Réponses}
 
-  \begin{tcolorbox}
-    \begin{itemize}[left=0pt,noitemsep]
-      \item \textbf{Encodage des réponses pour faciliter la lecture optique~:}
-            \begin{itemize}[nosep]
-              \item Utilisez un stylo-bille \textbf{bleu} standard ou \textbf{noir}, non-effaçable.
-              \item Noircissez complètement la case de votre choix.
-            \end{itemize}
-      \item \textbf{Modification de vos réponses~:}
-            \begin{itemize}[nosep]
-              \item Utilisez du correcteur liquide ou en ruban.
-              \item Ne redessinez ni les cases ni les lettres.
-            \end{itemize}
-    \end{itemize}
-  \end{tcolorbox}
+    \begin{tcolorbox}
+      \begin{itemize}[left=0pt,noitemsep]
+        \item \textbf{Encodage des réponses pour faciliter la lecture optique~:}
+              \begin{itemize}[nosep]
+                \item Utilisez un stylo-bille \textbf{bleu} standard ou \textbf{noir}, non-effaçable.
+                \item Noircissez complètement la case de votre choix.
+              \end{itemize}
+        \item \textbf{Modification de vos réponses~:}
+              \begin{itemize}[nosep]
+                \item Utilisez du correcteur liquide ou en ruban.
+                \item Ne redessinez ni les cases ni les lettres.
+              \end{itemize}
+      \end{itemize}
+    \end{tcolorbox}
 
-  \begin{spacing}{1}
-    \begin{multicols}{2}
-      \AMCform{}
-    \end{multicols}
-  \end{spacing}
-} % Fin de la commande \AnswerSheet
+    \begin{spacing}{1}
+      \begin{multicols}{2}
+        \AMCform{}
+      \end{multicols}
+    \end{spacing}
+  } % Fin de la commande \AnswerSheet
+\fi
 
 \newcommand{\DraftPage}{\clearpage{}\section*{Feuille de brouillon}\clearpage{}} % Crée une page de brouillon
 \newcommand{\FillIn}{\makebox[6em]{\hrulefill{}}} % Commande pour les espaces à remplir
