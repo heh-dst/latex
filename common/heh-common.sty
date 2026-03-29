@@ -10,11 +10,21 @@
 \RequirePackage{amsmath} % Capacités mathématiques étendues
 \RequirePackage[french]{babel} % Support multilingue
 \RequirePackage{xcolor}
+\RequirePackage{siunitx}   % Unités SI
 \RequirePackage{tikz}
 \usetikzlibrary{arrows,arrows.meta,calc,positioning,shapes.geometric,shapes.misc}
 \RequirePackage{graphicx}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
+
+
+% --- Configuration des unités SI ---
+\sisetup{
+  locale=FR,                     % Locale française (séparateur décimal virgule)
+  mode=match,                    % Utilise la police du mode (texte ou math) courant
+  per-mode=fraction              % Utiliser des fractions pour les unités
+}
+
 
 % --- Typographie ---
 \RequirePackage{fontspec} % Sélection de polices pour LuaLaTeX

@@ -60,18 +60,10 @@
 \PassOptionsToPackage{silent}{fontspec} % Supprime les avertissements de fontspec
 \RequirePackage{booktabs}  % Tableaux de meilleure qualité
 \RequirePackage{multicol}  % Colonnes multiples
-\RequirePackage{siunitx}   % Unités SI
 \RequirePackage{tcolorbox} % Boîtes colorées
 
 % --- HEH Common Resources ---
 \RequirePackage{heh-common}  % Shared HEH branding (colors, logo)
-
-% --- Configuration des unités SI ---
-\sisetup{
-  locale=FR,                     % Locale française (séparateur décimal virgule)
-  per-mode=fraction              % Utiliser des fractions pour les unités
-}
-
 
 % --- Formatage du texte ---
 \RequirePackage{setspace}  % Espacement des lignes
