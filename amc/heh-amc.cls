@@ -131,10 +131,10 @@
           \end{itemize}
     \item \textbf{Notation}
           \begin{itemize}[noitemsep]
-            \item Chaque réponse correcte = \textbf{1~point}.
-            \item Question non répondue ou mal encodée = \textbf{0~point}.
-            \item Pas de point négatif pour les erreurs.
-            \item \textbf{Répondez à toutes les questions}, même en cas de doute.
+            \item Chaque réponse correcte = \textbf{1~point}
+            \item Question non répondue ou mal encodée = \textbf{0~point}
+            \item Pas de point négatif pour les erreurs
+            \item \textbf{Répondez à toutes les questions}, même en cas de doute
           \end{itemize}
     \item \textbf{Format des questions à choix multiples}
           \begin{itemize}[noitemsep]
@@ -181,16 +181,10 @@
 
   \vspace{1em}
 
-  \begin{tabular}{@{}ll@{}}
-    \namefield{\tcbox[colback=white,title=Nom et prénom,title filled]{\begin{minipage}{.50\linewidth}%
-                                                                            \vspace{1cm}\namefielddots{}%
-                                                                            \vspace*{1mm}%
-                                                                          \end{minipage}}} &
-    \tcbox[bottomtitle=3pt,colback=white,title=Date,title filled]{\begin{minipage}{.325\linewidth}%
-                                                                      \vspace{1cm}\dotfill{}%
-                                                                      \vspace*{1mm}%
-                                                                    \end{minipage}}
-  \end{tabular}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}@{}lr@{}}
+    \namefield{\tcbox[colback=white,title=Nom et prénom,title filled]{\begin{minipage}{.50\linewidth}\vspace{1cm}\hfill\end{minipage}}} &
+    \tcbox[bottomtitle=3pt,colback=white,title=Date,title filled]{\begin{minipage}{.325\linewidth}\vspace{1cm}\hfill\end{minipage}}
+  \end{tabular*}
 
   \section*{Réponses}
 
@@ -204,14 +198,16 @@
       \item \textbf{Modification de vos réponses~:}
             \begin{itemize}[nosep]
               \item Utilisez du correcteur liquide ou en ruban.
-              \item Ne redessinez pas les cases.
+              \item Ne redessinez ni les cases ni les lettres.
             \end{itemize}
     \end{itemize}
   \end{tcolorbox}
 
-  \begin{multicols}{2}
-    \AMCform{}
-  \end{multicols}
+  \begin{spacing}{1}
+    \begin{multicols}{2}
+      \AMCform{}
+    \end{multicols}
+  \end{spacing}
 } % Fin de la commande \AnswerSheet
 
 \newcommand{\DraftPage}{\clearpage{}\section*{Feuille de brouillon}\clearpage{}} % Crée une page de brouillon
