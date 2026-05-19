@@ -118,29 +118,34 @@ def copy_file(src: Path, dest: Path, description: str) -> bool:
 
 
 def extract_amc_sty(repo_root: Path, texmf_home: Path) -> bool:
-    """Extract automultiplechoice.sty from .dtx.in if AMC is not installed."""
+    """Extract automultiplechoice.sty from .dtx.in and install/update it."""
     print("Checking for Auto Multiple Choice package...")
 
-    # Check if AMC is already available in the system
+    amc_user_dest = texmf_home / "tex" / "latex" / "AMC" / "automultiplechoice.sty"
+
+    # If AMC is provided by the system (not our TEXMFHOME install), defer to it.
     amc_system_check = run_command("kpsewhich automultiplechoice.sty", check=False)
     if amc_system_check:
-        print(f"  → AMC already available (system): {amc_system_check}")
-        return True
+        system_path = Path(amc_system_check).resolve()
+        if system_path != amc_user_dest.resolve():
+            print(f"  → AMC already available (system): {amc_system_check}")
+            return True
 
-    # Check if we already installed it
-    amc_user_dest = texmf_home / "tex" / "latex" / "AMC" / "automultiplechoice.sty"
-    if amc_user_dest.exists():
-        print(f"  → AMC already installed (user): {amc_user_dest}")
-        return True
-
-    # Try to extract from .dtx.in
-    dtx_in_path = (
-        repo_root / "auto-multiple-choice" / "tex" / "automultiplechoice.dtx.in"
-    )
+    # Locate the source template in the submodule
+    amc_tex_dir = repo_root / "auto-multiple-choice" / "tex"
+    dtx_in_path = amc_tex_dir / "automultiplechoice.dtx.in"
     if not dtx_in_path.exists():
         print(f"  ⚠ Warning: AMC source not found at {dtx_in_path}")
         print("     AMC package will need to be installed separately for compilation.")
         return False
+
+    sty_file = amc_tex_dir / "automultiplechoice.sty"
+
+    # If a previously-extracted .sty already exists in the submodule and the
+    # installed file is up to date with it, skip the pdflatex extraction.
+    if sty_file.exists() and not should_copy_file(sty_file, amc_user_dest):
+        print(f"  → automultiplechoice.sty up to date: {amc_user_dest}")
+        return True
 
     print(f"  → Extracting automultiplechoice.sty from {dtx_in_path.name}...")
 
@@ -173,10 +178,7 @@ def extract_amc_sty(repo_root: Path, texmf_home: Path) -> bool:
     dtx_content = re.sub(r"@/PACKAGE_V_STY_TEX/@", version_sty, dtx_content)
     dtx_content = re.sub(r"@/PACKAGE_V_PDFDATE/@", pdfdate, dtx_content)
 
-    # Work directly in the AMC tex directory (files are gitignored)
-    amc_tex_dir = repo_root / "auto-multiple-choice" / "tex"
     dtx_file = amc_tex_dir / "automultiplechoice.dtx"
-    sty_file = amc_tex_dir / "automultiplechoice.sty"
 
     # Write the processed .dtx file
     dtx_file.write_text(dtx_content, encoding="utf-8")
@@ -202,10 +204,13 @@ def extract_amc_sty(repo_root: Path, texmf_home: Path) -> bool:
             dtx_file.unlink()
         return False
 
-    # Copy the extracted .sty to texmf
-    ensure_directory(amc_user_dest.parent)
-    shutil.copy2(sty_file, amc_user_dest)
-    print(f"  ✓ Extracted and installed automultiplechoice.sty: {amc_user_dest}")
+    # Copy the freshly extracted .sty to texmf only if it differs
+    if should_copy_file(sty_file, amc_user_dest):
+        ensure_directory(amc_user_dest.parent)
+        shutil.copy2(sty_file, amc_user_dest)
+        print(f"  ✓ Installed automultiplechoice.sty: {amc_user_dest}")
+    else:
+        print(f"  → automultiplechoice.sty up to date: {amc_user_dest}")
 
     return True
 
