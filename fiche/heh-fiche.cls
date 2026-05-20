@@ -51,15 +51,11 @@
 \PassOptionsToPackage{hyphens}{url}
 \RequirePackage[pdfpagemode=UseNone,unicode]{hyperref}
 
-\PassOptionsToPackage{singlespacing}{scrlayer-scrpage}
+% --- Configuration des en-têtes et pieds de page ---
 \RequirePackage{scrlayer-scrpage}
 \setkomafont{pagehead}{\normalfont\normalcolor}
 \lohead{\scalebox{0.9}{\HEHLogo}}
 \lofoot{\raisebox{-5pt}{\tikz[opacity=.3]{\pgfuseimage{logo-wbe}\hspace{1em}\pgfuseimage{logo-pole};}}}
 \rofoot{\tikz[scale=.6]{\pic{hehballs};}}
 \pagestyle{plain.scrheadings}
-
-\AddToHook{begindocument}{%
-  \maketitle{}%
-  \thispagestyle{scrheadings}
-}
+\RenewDocumentCommand{\titlepagestyle}{}{scrheadings}
