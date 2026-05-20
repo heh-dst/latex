@@ -32,14 +32,17 @@
 % Traitement des options
 \ProcessOptions\relax
 
-% --- Chargement de scrartcl ---
+% --- Passe les options aux packages avant de charger quoi que ce soit ---
+\PassOptionsToPackage{silent}{fontspec} % Supprime les avertissements de fontspec
+\PassOptionsToPackage{headheight=41pt}{typearea} % Ajuste la hauteur de l'en-tête pour éviter les avertissements
+\PassOptionsToPackage{hyphens}{url}
+
 % Charge la classe de base scrartcl
-\LoadClass[DIV=12,fontsize=10pt,parskip=full]{scrartcl}
+\LoadClass[DIV=12,parskip=full]{scrartcl}
 
 % --- Packages de base ---
 % Formatage du document et langue
 \RequirePackage{amsmath}   % Capacités mathématiques étendues
-\PassOptionsToPackage{silent}{fontspec} % Supprime les avertissements de fontspec
 \RequirePackage{booktabs}  % Tableaux de meilleure qualité
 \RequirePackage{multicol}  % Colonnes multiples
 \RequirePackage{tcolorbox} % Boîtes colorées
@@ -48,7 +51,6 @@
 \RequirePackage{heh-common} % Shared HEH branding (colors, logo)
 
 % --- Liens hypertextes et métadonnées PDF ---
-\PassOptionsToPackage{hyphens}{url}
 \RequirePackage[pdfpagemode=UseNone,unicode]{hyperref}
 
 % --- Configuration des en-têtes et pieds de page ---
