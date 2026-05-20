@@ -262,6 +262,13 @@ def main():
     copy_directory(beamer_src, beamer_dest, "heh-beamer files")
     print()
 
+    # Install fiche files
+    print("Installing fiche files...")
+    fiche_src = repo_root / "fiche"
+    fiche_dest = texmf_home / "tex" / "latex" / "heh-dst"
+    copy_directory(fiche_src, fiche_dest, "heh-fiche files")
+    print()
+
     # Install fonts
     print("Installing fonts...")
 

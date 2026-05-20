@@ -3,17 +3,6 @@
 \RequirePackage{tikz}
 \RequirePackage{heh-common}
 
-\pgfdeclareimage[height=2em]{logo-pole}{logo-pole-hainuyer.png}
-\pgfdeclareimage[height=2em]{logo-wbe}{logo-wbe.png}
-\tikzset{
-  hehballs/.pic={
-      \fill[heh@red1] (-4.5em,0) circle [radius=.5em];%
-      \fill[heh@red2] (-3em,0) circle [radius=.5em];%
-      \fill[heh@red3] (-1.5em,0) circle [radius=.5em];%
-      \fill[heh@red5] (0,0) circle [radius=.5em];%
-    }
-}
-
 \newsavebox{\heh@logo}
 \newlength{\wdoflogo}
 \sbox{\heh@logo}{\scalebox{0.9}{\HEHLogo}}
