@@ -228,6 +228,7 @@ def main():
 
     # Get TEXMFHOME directory
     texmf_home = get_texmf_home()
+    latex_src = repo_root / "latex"
     print()
 
     # Extract and install AMC package if not available
@@ -235,38 +236,16 @@ def main():
     print()
 
     # Install HEH common resources
-    print("Installing HEH common resources...")
-    common_sty_src = repo_root / "common" / "heh-common.sty"
-    common_sty_dest = texmf_home / "tex" / "latex" / "heh-dst" / "heh-common.sty"
-    copy_file(common_sty_src, common_sty_dest, "heh-common package")
+    print("Installing HEH resources...")
+    heh_dst_dest = texmf_home / "tex" / "latex" / "heh-dst"
+    copy_directory(latex_src, heh_dst_dest, "HEH-DST files")
     print()
 
     # Install shared graphics
     print("Installing shared graphics...")
-    graphics_src = repo_root / "common" / "graphics"
-    graphics_dest = texmf_home / "tex" / "latex" / "heh-dst" / "graphics"
-    copy_directory(graphics_src, graphics_dest, "HEH shared graphics")
-    print()
-
-    # Install AMC class
-    print("Installing AMC class...")
-    amc_src = repo_root / "amc" / "heh-amc.cls"
-    amc_dest = texmf_home / "tex" / "latex" / "heh-dst" / "heh-amc.cls"
-    copy_file(amc_src, amc_dest, "heh-amc class")
-    print()
-
-    # Install beamer files
-    print("Installing beamer files...")
-    beamer_src = repo_root / "beamer"
-    beamer_dest = texmf_home / "tex" / "latex" / "heh-dst"
-    copy_directory(beamer_src, beamer_dest, "heh-beamer files")
-    print()
-
-    # Install fiche files
-    print("Installing fiche files...")
-    fiche_src = repo_root / "fiche"
-    fiche_dest = texmf_home / "tex" / "latex" / "heh-dst"
-    copy_directory(fiche_src, fiche_dest, "heh-fiche files")
+    graphics_src = latex_src / "graphics"
+    graphics_dest = heh_dst_dest / "graphics"
+    copy_directory(graphics_src, graphics_dest, "HEH-DST shared graphics")
     print()
 
     # Install fonts
