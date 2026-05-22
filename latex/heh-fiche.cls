@@ -33,7 +33,6 @@
 \ProcessOptions\relax
 
 % --- Passe les options aux packages avant de charger quoi que ce soit ---
-\PassOptionsToPackage{silent}{fontspec} % Supprime les avertissements de fontspec
 \PassOptionsToPackage{headheight=41pt}{typearea} % Ajuste la hauteur de l'en-tête pour éviter les avertissements
 \PassOptionsToPackage{hyphens}{url}
 
@@ -42,7 +41,6 @@
 
 % --- Packages de base ---
 % Formatage du document et langue
-\RequirePackage{amsmath}   % Capacités mathématiques étendues
 \RequirePackage{booktabs}  % Tableaux de meilleure qualité
 \RequirePackage{multicol}  % Colonnes multiples
 \RequirePackage{tcolorbox} % Boîtes colorées
