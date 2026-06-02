@@ -9,6 +9,7 @@
 % Required packages
 \RequirePackage{amsmath} % Capacités mathématiques étendues
 \RequirePackage[french]{babel} % Support multilingue
+\RequirePackage{csquotes}
 \RequirePackage{xcolor}
 \RequirePackage{siunitx}   % Unités SI
 \RequirePackage{tikz}
@@ -27,6 +28,7 @@
 
 
 % --- Typographie ---
+\PassOptionsToPackage{silent}{fontspec} % Supprime les avertissements de fontspec
 \RequirePackage{fontspec} % Sélection de polices pour LuaLaTeX
 \RequirePackage{lua-unicode-math} % Sélection de polices pour LuaLaTeX
 \setsansfont{IBMPlexSans}[
@@ -121,6 +123,21 @@
     \useasboundingbox (0,1.14) rectangle (techno.south east);
   \end{tikzpicture}%
 }
+
+% Other elements for footers
+\pgfdeclareimage[height=2em]{logo-pole}{logo-pole-hainuyer.png}
+\pgfdeclareimage[height=2em]{logo-wbe}{logo-wbe.png}
+
+\tikzset{
+  hehballs/.pic={
+      \fill[heh@red1] (-4.5em,0) circle [radius=.5em];%
+      \fill[heh@red2] (-3em,0) circle [radius=.5em];%
+      \fill[heh@red3] (-1.5em,0) circle [radius=.5em];%
+      \fill[heh@red5] (0,0) circle [radius=.5em];%
+    }
+}
+
+
 
 % Flowchart node styles
 \tikzset{

@@ -2,7 +2,6 @@ pdf-engine: lualatex
 shift-heading-level-by: -1
 tab-stop: 2
 variables:
-  author: François Roland
   documentclass: scrartcl
   lang: fr
   geometry:
