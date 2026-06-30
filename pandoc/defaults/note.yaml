@@ -18,5 +18,3 @@ variables:
   monofontoptions:
     - Contextuals=AlternateOff
   papersize: a4
-  pdfstandard:
-    - ua-2
