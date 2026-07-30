@@ -1,65 +1,31 @@
-\documentclass[12pt,a4paper,french,toc=bib,oneside,version=3.41]{scrartcl}
-\setcounter{tocdepth}{\sectiontocdepth}
+\documentclass{heh-syllabus}
 
-\usepackage{booktabs,geometry,microtype,multicol,setspace,titling}
-
-\usepackage[locale=FR]{siunitx}
-
-\usepackage{hyperref}
-\title{Test Document}
-\author{HEH LaTeX Test Suite}
-
-\hypersetup{
-  colorlinks=true,
-  pdftitle={\thetitle{}},
-  pdfauthor={\theauthor{}},
-  pdflang={fr}
-}
-
-\usepackage{tikz}
-
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-
-% HEH branding
-\usepackage{heh-common}  % Provides HEH colors and logo
-
-% Configure hyperlinks with HEH blue
-\hypersetup{
-  linkcolor=heh@blue,
-  urlcolor=heh@blue,
-  citecolor=heh@blue
-}
+\title{Réseaux informatiques}
+\author{François Roland}
 
 \begin{document}
-\onehalfspacing{}
 
-\maketitle{}
+\frontmatter
+\maketitle
+\tableofcontents
 
-\section{Test Section}
+\mainmatter
+\chapter{Introduction}
 
-Ceci est un document de test pour vérifier la compilation du template syllabus HEH DST.
+Ceci est le corps du chapitre.
 
-Ce document démontre l'utilisation des couleurs HEH et du logo.
+\begin{definition}{Protocole}{protocole}
+  Un ensemble de règles régissant l'échange de données entre deux
+  systèmes.
+\end{definition}
 
-\subsection{Logo HEH}
+\begin{exemple}{TCP}{tcp}
+  Le protocole TCP garantit l'ordre et la fiabilité de la livraison.
+\end{exemple}
 
-Voici le logo HEH intégré dans le document: \HEHLogo{}
+Renvoi vers la définition~\ref{def:protocole}.
 
-\subsection{Tableau de test}
-
-\begin{table}[h]
-  \centering
-  \begin{tabular}{lcc}
-    \toprule
-    Élément & Valeur             & Statut                         \\
-    \midrule
-    Test 1  & \SI{100}{\percent} & \textcolor{heh@blue}{OK}       \\
-    Test 2  & \SI{95}{\percent}  & \textcolor{heh@blue}{OK}       \\
-    Test 3  & \SI{88}{\percent}  & \textcolor{heh@red5}{À revoir} \\
-    \bottomrule
-  \end{tabular}
-  \caption{Tableau de test avec couleurs HEH}
-\end{table}
+% \backmatter
+% \printindex
 
 \end{document}

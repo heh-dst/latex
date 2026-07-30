@@ -1,0 +1,73 @@
+% heh-pedago.sty — Environnements pédagogiques partagés (DST HEH)
+% Copyright (c) 2026 — François Roland
+%
+% Fournit des environnements sémantiques (definition, exemple,
+% remarque, exercice) avec la même identité "conceptuelle" partout,
+% mais un habillage tcolorbox différent selon le support :
+% - page continue (heh-syllabus / heh-fiche) : boîtes "breakable",
+%   peuvent franchir un saut de page ;
+% - frame Beamer (heh-beamer) : boîtes compactes, non "breakable".
+%
+% BROUILLON NON COMPILÉ — à tester avant usage en production,
+% notamment le comportement de \newtcbtheorem et de "use counter".
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{heh-pedago}[2026/07/30 v0.0.1 Environnements pédagogiques HEH]
+
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins,breakable,theorems}
+
+% Réutilise la palette heh-common : heh@blue (définition), heh@teal
+% (exemple), heh@green (remarque), heh@red5 (exercice). Ces couleurs
+% existent déjà dans heh-common.sty — pas de nouvelle couleur inventée
+% ici, uniquement une réaffectation sémantique de la palette existante.
+
+\@ifclassloaded{beamer}{%
+  % ==================================================================
+  % Rendu Beamer : boîtes compactes, une frame = un morceau visible
+  % ==================================================================
+  \newcounter{hehpedago@counter}
+
+  \newtcbtheorem[use counter=hehpedago@counter]{definition}{Définition}{%
+    colback=heh@blue!8,colframe=heh@blue,fonttitle=\bfseries,
+    breakable=false,boxrule=0.8pt,left=6pt,right=6pt,top=3pt,bottom=3pt
+  }{def}
+  \newtcbtheorem[use counter=hehpedago@counter]{exemple}{Exemple}{%
+    colback=heh@teal!10,colframe=heh@teal,fonttitle=\bfseries,
+    breakable=false,boxrule=0.8pt,left=6pt,right=6pt,top=3pt,bottom=3pt
+  }{ex}
+  \newtcbtheorem[use counter=hehpedago@counter]{remarque}{Remarque}{%
+    colback=heh@green!10,colframe=heh@green,fonttitle=\bfseries,
+    breakable=false,boxrule=0.8pt,left=6pt,right=6pt,top=3pt,bottom=3pt
+  }{rem}
+  \newtcbtheorem[use counter=hehpedago@counter]{exercice}{Exercice}{%
+    colback=heh@red5!8,colframe=heh@red5,fonttitle=\bfseries,
+    breakable=false,boxrule=0.8pt,left=6pt,right=6pt,top=3pt,bottom=3pt
+  }{exo}
+}{%
+  % ==================================================================
+  % Rendu page continue (article ou livre) : boîtes "breakable"
+  % ==================================================================
+  % Numérotation par chapitre si \chapter existe (heh-syllabus /
+  % scrbook), sinon par section (heh-fiche / scrartcl).
+  \newtcbtheorem[counter within=chapter]{definition}{Définition}{%
+    colback=heh@blue!8,colframe=heh@blue,fonttitle=\bfseries,
+    breakable=true,boxrule=0.8pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+    before skip=8pt,after skip=8pt
+  }{def}
+  \newtcbtheorem[counter within=chapter]{exemple}{Exemple}{%
+    colback=heh@teal!10,colframe=heh@teal,fonttitle=\bfseries,
+    breakable=true,boxrule=0.8pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+    before skip=8pt,after skip=8pt
+  }{ex}
+  \newtcbtheorem[counter within=chapter]{remarque}{Remarque}{%
+    colback=heh@green!10,colframe=heh@green,fonttitle=\bfseries,
+    breakable=true,boxrule=0.8pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+    before skip=8pt,after skip=8pt
+  }{rem}
+  \newtcbtheorem[counter within=chapter]{exercice}{Exercice}{%
+    colback=heh@red5!8,colframe=heh@red5,fonttitle=\bfseries,
+    breakable=true,boxrule=0.8pt,left=6pt,right=6pt,top=4pt,bottom=4pt,
+    before skip=8pt,after skip=8pt
+  }{exo}
+}
