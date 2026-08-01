@@ -41,21 +41,12 @@
 \PassOptionsToPackage{hyphens}{url}
 
 % --- Charge la classe de base scrbook ---
-% twoside + BCOR : le syllabus est destiné à une impression reliée.
+% BCOR : le syllabus est destiné à une impression reliée.
 % BCOR=8mm est un point de départ raisonnable pour quelques dizaines
 % de pages en reliure dos carré-collé ; à ajuster selon le nombre de
 % pages réel et le mode de reliure retenu par la maison d'édition, via
 % l'option de classe (voir ci-dessus), pas en modifiant ce fichier.
-% version=3.41 : même valeur que le reste du dépôt (heh-fiche.cls,
-% ancien document.tex), pour rester sur un comportement KOMA cohérent
-% dans tout l'écosystème.
-\LoadClass[
-  fontsize=11pt,a4paper,french,
-  twoside,BCOR=8mm,
-  DIV=12,parskip=full,
-  chapterprefix=true,headings=big,
-  toc=bibliography
-]{scrbook}
+\LoadClass[BCOR=8mm,DIV=12,parskip=full,chapterprefix=true,headings=big,toc=bibliography]{scrbook}
 
 % --- Packages de base ---
 \RequirePackage{bookmark}
@@ -81,23 +72,19 @@
   citecolor=heh@blue,
   urlcolor=heh@blue,
 }
-% Renseigne pdftitle/pdfauthor automatiquement à partir de \title/\author
-% du document : évite de le répéter dans chaque fichier .tex.
-\RequirePackage{titling}
-\AtBeginDocument{%
-  \hypersetup{pdftitle=\thetitle{},pdfauthor=\theauthor{}}%
-}
 
 % --- En-têtes et pieds de page (recto/verso) ---
 % Contrairement à heh-fiche.cls (oneside), le syllabus est twoside :
 % il faut distinguer pages paires (verso, "e") et impaires (recto, "o").
 \RequirePackage{scrlayer-scrpage}
-\automark[chapter]{chapter}
-\setkomafont{pagehead}{\normalfont\normalcolor}
-\lehead{\scalebox{0.9}{\HEHLogo}}
-\rohead{\headmark}
-\cfoot{\pagemark}
-\lofoot{\tikz[scale=.6]{\pic{hehballs};}}
-\refoot{\raisebox{-5pt}{\tikz[opacity=.3]{\pgfuseimage{logo-wbe}\hspace{1em}\pgfuseimage{logo-pole};}}}
-\pagestyle{scrheadings}
-\RenewDocumentCommand{\titlepagestyle}{}{scrheadings}
+%\automark[chapter]{chapter}
+%\setkomafont{pagehead}{\normalfont\normalcolor}
+
+\defpagestyle{hehtitle}%
+{{\scalebox{0.9}{\HEHLogo}\hfil}%
+  {\scalebox{0.9}{\HEHLogo}\hfil}%
+  {\scalebox{0.9}{\HEHLogo}\hfil}}%
+{{\raisebox{-5pt}{\tikz[opacity=.3]{\pgfuseimage{logo-wbe}\hspace{1em}\pgfuseimage{logo-pole};}}\hfill\tikz[scale=.6]{\pic{hehballs};}}%
+  {\raisebox{-5pt}{\tikz[opacity=.3]{\pgfuseimage{logo-wbe}\hspace{1em}\pgfuseimage{logo-pole};}}\hfill\tikz[scale=.6]{\pic{hehballs};}}%
+  {\raisebox{-5pt}{\tikz[opacity=.3]{\pgfuseimage{logo-wbe}\hspace{1em}\pgfuseimage{logo-pole};}}\hfill\tikz[scale=.6]{\pic{hehballs};}}}
+\RenewDocumentCommand{\titlepagestyle}{}{hehtitle}
