@@ -1,7 +1,5 @@
-#import "@preview/fontawesome:0.6.2": *
-
 #set document(
-  title: "UE : Réseaux informatiques",
+  title: "Réseaux informatiques",
   author: "François Roland",
 )
 
@@ -37,59 +35,78 @@
 #show heading.where(level: 2): set text(size: 1.777em)
 #show heading.where(level: 3): set text(size: 1.333em)
 
-#page(margin: (inside: 1cm + bind-correction, rest: 1cm))[
-  #place(top + left)[
-    #image("images/logo-heh-dst.png", height: 1.8cm)
-    #context {
-      let link-width = measure("www.heh.be").width + 1em
-      rect(fill: heh-red, width: link-width, height: 0.1cm)
-    }
-
-    #box(baseline: horizon, fa-icon("location-dot", fill: heh-red))
-    #h(0.5em)
-    #box(baseline: horizon)[
-      Avenue V. Maistriau 8a \
-      7000 Mons
-    ] \
-    #box(baseline: horizon, fa-icon("phone", fill: heh-red))
-    #h(0.5em)
-    #box(baseline: horizon)[
-      +32 65 31 81 54
-    ] \
-    #box(baseline: horizon, fa-icon("magnifying-glass", fill: heh-red))
-    #h(0.5em)
-    #box(baseline: horizon)[
-      #link("mailto:scitech-mons@heh.be")
+#let cover-page(
+  academic-year: [ 2026~--~2027 ],
+  course: "Programmation",
+  cursus: "Bachelier en techniques graphiques",
+) = {
+  page(margin: (inside: 1cm + bind-correction, rest: 1cm))[
+    #place(top + left)[
+      #set text(size: 0.75em)
+      #image("images/logo-heh-dst.png", height: 1.6cm, alt: "Logo HEH")
+      #let link-content = text("www.heh.be", fill: white, weight: "black")
+      #context {
+        let link-width = measure(link-content).width + 1em
+        rect(fill: heh-red, width: link-width, height: 0.1cm)
+      }
+      #let location-dot-icon = read("images/location-dot.svg").replace("currentColor", heh-red.to-hex())
+      #pdf.artifact(kind: "layout", box(width: 1em, align(center, image(
+        bytes(location-dot-icon),
+        height: 1em,
+      ))))
+      #h(0.5em)
+      #box[
+        Avenue V. Maistriau 8a \
+        7000 Mons
+      ] \
+      #let phone-icon = read("images/phone.svg").replace("currentColor", heh-red.to-hex())
+      #pdf.artifact(kind: "layout", box(width: 1em, align(center, image(
+        bytes(phone-icon),
+        height: 1em,
+      ))))
+      #h(0.5em)
+      #box[
+        +32 65 31 81 54
+      ] \
+      #let magnifying-glass-icon = read("images/magnifying-glass.svg").replace("currentColor", heh-red.to-hex())
+      #pdf.artifact(kind: "layout", box(width: 1em, align(center, image(
+        bytes(magnifying-glass-icon),
+        height: 1em,
+      ))))
+      #h(0.5em)
+      #box[
+        #link("mailto:scitech-mons@heh.be")
+      ]
+      #v(0.5em)
+      #block(fill: heh-red, inset: 0.5em)[
+        #link("https://www.heh.be", link-content)
+      ]
     ]
-    #v(0.5em)
-    #block(fill: heh-red, inset: 0.5em)[
-      #link("https://www.heh.be", text("www.heh.be", fill: white))
+    #place(top + right)[
+      Année académique #text(fill: heh-red, weight: "bold", academic-year)
     ]
-  ]
-  #place(top + right)[
-    Année académique #text(fill: heh-red, weight: "bold")[2025--2026]
-  ]
 
-  #place(horizon + right)[
-    #set text(fill: white, size: 1.777em)
-    #block(fill: heh-red, width: 15cm, inset: 1em)[
+    #place(horizon + right, block(fill: heh-red, width: 15cm, inset: .5cm)[
+      #set text(fill: white)
       #set align(left)
-      #text(weight: "bold")[#context document.title]
+      #text(size: 1.777em, weight: "bold")[#text(fill: heh-red.lighten(80%))[UE~:] #course]
       #v(1.5em)
-      Bachelier en informatique
+      #text(size: 1.333em, cursus)
+    ])
+
+    #place(bottom + left)[
+      François Roland \
+      #link("mailto:francois.roland@heh.be")
+    ]
+    #place(bottom + right)[
+      #box(image("images/logo-wbe.jpg", height: 0.9cm, alt: "Logo Wallonie-Bruxelles Enseignement"))
+      #h(1.5em)
+      #box(image("images/logo-pole-hainuyer.jpg", height: 0.9cm, alt: "Logo Pôle Hainuyer"))
     ]
   ]
+}
 
-  #place(bottom + left)[
-    François Roland \
-    #link("mailto:francois.roland@heh.be")
-  ]
-  #place(bottom + right)[
-    #box(image("images/logo-wbe.jpg", height: 3em))
-    #h(1.5em)
-    #box(image("images/logo-pole-hainuyer.jpg", height: 3em))
-  ]
-]
+#cover-page()
 
 #set page(
   footer: context {
