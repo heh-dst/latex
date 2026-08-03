@@ -1,4 +1,4 @@
-#import "heh-syllabus.typ": heh-syllabus
+#import "@heh-dst/heh-syllabus:0.0.1": heh-syllabus
 
 #set document(
   title: "Réseaux informatiques",
@@ -12,6 +12,10 @@
 == Première section
 
 #lorem(30)
+
+J'ai envie de tester si ça fonctionne bien.
+
+Ca a l'air de fonctionner correctement.
 
 == Deuxième section
 

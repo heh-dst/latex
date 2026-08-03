@@ -1,6 +1,6 @@
 #let heh-red = rgb(228, 21, 19)
 
-#let cover-page(
+#let heh-syllabus-cover-page(
   academic-year,
   bind-correction,
   course,
@@ -13,7 +13,7 @@
     margin: (inside: 1cm + bind-correction, rest: 1cm),
   )
   let left-header = {
-    image("images/logo-heh-dst.png", height: 1.6cm, alt: "Logo HEH")
+    image("logo-heh-dst.png", height: 1.6cm, alt: "Logo HEH")
     set text(size: 0.75em)
     let heh-link = block(
       fill: heh-red,
@@ -31,7 +31,7 @@
       let link-width = measure(heh-link).width
       rect(fill: heh-red, width: link-width, height: 0.1cm)
     }
-    let location-dot-icon = read("images/location-dot.svg").replace("currentColor", heh-red.to-hex())
+    let location-dot-icon = read("location-dot.svg").replace("currentColor", heh-red.to-hex())
     pdf.artifact(kind: "layout", box(width: 1em, align(center, image(
       bytes(location-dot-icon),
       height: 1em,
@@ -42,7 +42,7 @@
       7000 Mons
     ]
     linebreak()
-    let phone-icon = read("images/phone.svg").replace("currentColor", heh-red.to-hex())
+    let phone-icon = read("phone.svg").replace("currentColor", heh-red.to-hex())
     pdf.artifact(kind: "layout", box(width: 1em, align(center, image(
       bytes(phone-icon),
       height: 1em,
@@ -52,7 +52,7 @@
       +32 65 31 81 54
     ]
     linebreak()
-    let magnifying-glass-icon = read("images/magnifying-glass.svg").replace("currentColor", heh-red.to-hex())
+    let magnifying-glass-icon = read("magnifying-glass.svg").replace("currentColor", heh-red.to-hex())
     pdf.artifact(kind: "layout", box(width: 1em, align(center, image(
       bytes(magnifying-glass-icon),
       height: 1em,
@@ -91,9 +91,9 @@
     ]
     h(1fr)
     box(baseline: bottom)[
-      #box(image("images/logo-wbe.jpg", height: 0.9cm, alt: "Logo Wallonie-Bruxelles Enseignement"))
+      #box(image("logo-wbe.jpg", height: 0.9cm, alt: "Logo Wallonie-Bruxelles Enseignement"))
       #h(1.5em)
-      #box(image("images/logo-pole-hainuyer.jpg", height: 0.9cm, alt: "Logo Pôle Hainuyer"))
+      #box(image("logo-pole-hainuyer.jpg", height: 0.9cm, alt: "Logo Pôle Hainuyer"))
     ]
   }
 
@@ -107,14 +107,14 @@
   )
 }
 
-#let title-page(bind-correction, course, cursus, subtitle) = context {
+#let heh-syllabus-title-page(bind-correction, course, cursus, subtitle) = context {
   set page(
     margin: (inside: 1cm + bind-correction, rest: 1cm),
   )
 
   counter(page).update(1)
 
-  box(baseline: top, image("images/logo-heh-dst.png", height: 1.6cm, alt: "Logo HEH"))
+  box(baseline: top, image("logo-heh-dst.png", height: 1.6cm, alt: "Logo HEH"))
   h(1fr)
   box(
     baseline: top,
@@ -158,11 +158,11 @@
   show math.equation: set text(font: "STIX Two Math", stylistic-set: 1)
   show raw: set text(font: "FiraCode Nerd Font")
 
-  cover-page(academic-year, bind-correction, course, cursus, subtitle)
+  heh-syllabus-cover-page(academic-year, bind-correction, course, cursus, subtitle)
 
   pagebreak(to: "odd")
 
-  title-page(bind-correction, course, cursus, subtitle)
+  heh-syllabus-title-page(bind-correction, course, cursus, subtitle)
 
   set heading(numbering: "1.1.")
   set page(

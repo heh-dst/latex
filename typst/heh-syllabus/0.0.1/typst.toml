@@ -1,0 +1,9 @@
+[package]
+name = "heh-syllabus"
+version = "0.0.1"
+entrypoint = "lib.typ"
+authors = ["François Roland"]
+description = "Create textbooks for the HEH."
+repository = "https://github.com/heh-dst/latex.git"
+categories = ["book"]
+disciplines = ["computer-science", "education"]

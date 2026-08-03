@@ -4,6 +4,7 @@ Installation script for HEH-DST LaTeX classes and fonts.
 Works on Linux, Windows, and macOS.
 """
 
+import json
 import os
 import re
 import shutil
@@ -45,6 +46,21 @@ def get_texmf_home() -> Path:
     texmf_path = Path(texmf_home).expanduser()
     print(f"TEXMFHOME: {texmf_path}")
     return texmf_path
+
+
+def get_typst_package_dir() -> Path:
+    """Get the Typst local package directory."""
+    print("Detecting Typst package directory...")
+    typst_info = run_command("typst info --format json", check=False)
+
+    if not typst_info:
+        print("Error: Could not detect Typst package directory. Is Typst installed?")
+        sys.exit(1)
+
+    package_path = json.loads(typst_info)["packages"]["package-path"]
+    typst_path = Path(package_path).expanduser()
+    print(f"Typst package directory: {typst_path}")
+    return typst_path
 
 
 def ensure_directory(path: Path) -> None:
@@ -236,7 +252,7 @@ def main():
     print()
 
     # Install HEH common resources
-    print("Installing HEH resources...")
+    print("Installing HEH LaTeX resources...")
     heh_dst_dest = texmf_home / "tex" / "latex" / "heh-dst"
     copy_directory(latex_src, heh_dst_dest, "HEH-DST files")
     print()
@@ -373,6 +389,13 @@ def main():
     appdata = os.environ.get("APPDATA")
     pandoc_dest = Path(appdata) / "pandoc" if appdata else Path.home() / ".pandoc"
     copy_directory(pandoc_src, pandoc_dest, "pandoc files")
+    print()
+
+    # Install HEH common resources
+    print("Installing HEH Typst resources...")
+    typst_src = repo_root / "typst"
+    typst_dest = get_typst_package_dir() / "heh-dst"
+    copy_directory(typst_src, typst_dest, "Typst files")
     print()
 
     print("=" * 80)
