@@ -43,4 +43,10 @@
 
 #lorem(300)
 
+#math.equation($y = a x^2 + b x + c$, block: true, alt: "Equation quadratique")
+
+```python
+print("Hello, w0rld!")
+```
+
 

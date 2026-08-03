@@ -153,7 +153,10 @@
   set text(
     font: "IBM Plex Sans",
     lang: "fr",
+    size: 11pt,
   )
+  show math.equation: set text(font: "STIX Two Math", stylistic-set: 1)
+  show raw: set text(font: "FiraCode Nerd Font")
 
   cover-page(academic-year, bind-correction, course, cursus, subtitle)
 
