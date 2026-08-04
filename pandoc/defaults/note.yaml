@@ -4,7 +4,9 @@ tab-stop: 2
 variables:
   documentclass: scrartcl
   lang: fr
-  margin: 2.5cm
+  margin:
+    x: 2.5cm
+    y: 2.5cm
   papersize: a4
   mainfont: "IBM Plex Sans"
   section-numbering: 1.1.
