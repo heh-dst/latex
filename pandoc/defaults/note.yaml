@@ -1,20 +1,13 @@
-pdf-engine: lualatex
+pdf-engine: typst
 shift-heading-level-by: -1
 tab-stop: 2
 variables:
   documentclass: scrartcl
   lang: fr
-  geometry:
-    - top=2cm
-    - left=2cm
-    - heightrounded
-  hyperrefoptions:
-    - pdfpagemode=UseNone
-  mainfont: IBMPlexSans
-  mainfontoptions:
-    - Numbers=SlashedZero
-  mathfont: STIXTwoMath
-  monofont: FiraCode
-  monofontoptions:
-    - Contextuals=AlternateOff
+  margin: 2.5cm
   papersize: a4
+  mainfont: "IBM Plex Sans"
+  section-numbering: 1.1.
+  page-numbering: "1"
+  mathfont: "STIX Two Math"
+  monofont: "FiraCode Nerd Font"
