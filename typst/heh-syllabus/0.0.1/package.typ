@@ -1,3 +1,7 @@
+#import "@preview/lovelace:0.3.1": pseudocode-list
+#import "@preview/showybox:2.0.4": showybox
+#import "@preview/zebraw:0.6.3": *
+
 #let heh-red = rgb(228, 21, 19)
 
 #let heh-syllabus-cover-page(
@@ -139,6 +143,80 @@
   ]
 }
 
+#let content-box(accent-color: black, body-align: left, title: none, content) = {
+  showybox(
+    body-style: (
+      align: body-align,
+    ),
+    breakable: true,
+    footer-style: (
+      align: center,
+    ),
+    frame: (
+      border-color: accent-color,
+      body-color: accent-color.lighten(95%),
+      title-color: accent-color,
+      thickness: 1pt,
+    ),
+    title-style: (
+      boxed-style: (
+        anchor: (x: left, y: horizon),
+      ),
+    ),
+    title: [*#title*],
+  )[
+    #content
+  ]
+}
+
+#let code-box(content) = content-box(
+  title: [Code],
+  content,
+  accent-color: purple,
+)
+
+#let code(caption: "", content) = {
+  figure(
+    caption: caption,
+    kind: "code",
+    supplement: [Code],
+    code-box(content),
+  )
+}
+
+#let pseudocode-box(content) = {
+  content-box(
+    accent-color: rgb(34, 139, 34),
+    title: "Pseudocode",
+    pseudocode-list(line-number-supplement: "Ligne", content),
+  )
+}
+
+#let algorithm(caption: "", content) = {
+  figure(
+    caption: caption,
+    kind: "algorithm",
+    supplement: [Algorithme],
+    pseudocode-box(content),
+  )
+}
+
+#let flowchart-box(content) = content-box(
+  accent-color: rgb(184, 134, 11),
+  body-align: center,
+  title: "Ordinogramme",
+  content,
+)
+
+#let flowchart(caption: "", content) = {
+  figure(
+    caption: caption,
+    kind: "flowchart",
+    supplement: [Ordinogramme],
+    flowchart-box(content),
+  )
+}
+
 #let heh-syllabus(
   academic-year: [ 2026~--~2027 ],
   bind-correction: 0.5cm,
@@ -182,6 +260,8 @@
     margin: (inside: 2.5cm + bind-correction, rest: 2.5cm),
     numbering: "1",
   )
+  show heading: set par(justify: false)
+  show heading.where(level: 1): set text(hyphenate: false)
   show heading.where(level: 1): it => {
     {
       set page(header: none, footer: none)
@@ -204,9 +284,22 @@
     v(5em)
   }
   show heading.where(level: 2): set text(size: 1.777em)
+  show heading.where(level: 2): set heading(supplement: "Section")
   show heading.where(level: 3): set text(size: 1.333em)
+  show heading.where(level: 3): set heading(supplement: "Point")
 
   set par(justify: true)
+  show table: set par(justify: false)
+
+  set figure.caption(separator: [~--- ])
+
+  show raw.where(block: true): set text(size: 1em / 0.8)
+
+  show: zebraw.with(
+    background-color: purple.transparentize(100%),
+    lang: false,
+    numbering-separator: true,
+  )
 
   outline(depth: 2)
 
