@@ -38,15 +38,15 @@
 #let answers-box(content) = content-box(
   accent-color: color-palette.yellow,
   breakable: true,
-  title: [Corrigés],
+  title: "Solutions",
   content,
 )
 
 #let code-box(content) = content-box(
-  title: [Code],
-  content,
   accent-color: color-palette.bluish-green,
+  title: "Code",
   title-color: color-palette.white,
+  content,
 )
 
 #let flowchart-box(content) = content-box(
@@ -60,7 +60,7 @@
   content-box(
     accent-color: color-palette.blue,
     title: "Pseudocode",
-    content,
     title-color: color-palette.white,
+    content,
   )
 }
