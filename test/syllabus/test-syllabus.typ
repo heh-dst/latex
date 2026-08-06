@@ -1,4 +1,4 @@
-#import "@heh-dst/heh-syllabus:0.0.1": heh-syllabus
+#import "@heh-dst/heh-syllabus:0.0.1": *
 
 #set document(
   title: "Réseaux informatiques",
@@ -21,11 +21,20 @@ Ca a l'air de fonctionner correctement.
 
 #lorem(30)
 
-#lorem(30)
+#answers-box(lorem(32))
 
-#lorem(30)
+#code-box(lorem(30))
 
-#lorem(30)
+#pseudocode-box[
+  + step 1
+  + step 2
+  + *repeat* 3 times
+    + step 2.1
+    + step 2.2
+  + step 3
+]
+
+#flowchart-box(lorem(30))
 
 #lorem(30)
 

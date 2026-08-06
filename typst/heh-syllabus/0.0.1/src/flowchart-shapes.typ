@@ -1,15 +1,16 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node
 #import fletcher.shapes: diamond, pill
+#import "package.typ": color-palette
 
 #let flowchart-colors = (
-  begin: green.lighten(75%),
-  condition: yellow.lighten(75%),
-  end: red.lighten(75%),
+  begin: color-palette.bluish-green.lighten(75%),
+  condition: color-palette.orange.lighten(75%),
+  end: color-palette.reddish-purple.lighten(75%),
 )
 
 #let flowchart(..args) = diagram(
-  node-fill: white,
-  node-stroke: black,
+  node-fill: color-palette.white,
+  node-stroke: color-palette.black,
   ..args,
 )
 
