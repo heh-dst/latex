@@ -9,6 +9,8 @@
 
 #show: main-matter
 
+#outline()
+
 = Introduction
 
 == Première section
