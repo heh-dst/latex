@@ -62,7 +62,8 @@
   set par(justify: true)
   show table: set par(justify: false)
 
-  set figure.caption(separator: [~--- ])
+  set figure(supplement: "Figure")
+  set figure.caption(separator: [. ])
 
   show raw: set text(size: 1em / 0.8)
 
