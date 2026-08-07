@@ -7,6 +7,8 @@
 
 #show: heh-syllabus
 
+#show: main-matter
+
 = Introduction
 
 == Première section
@@ -59,7 +61,24 @@ Ca a l'air de fonctionner correctement.
 #math.equation($y = a x^2 + b x + c$, block: true, alt: "Equation quadratique")
 
 ```python
-print("Hello, w0rld!")
+def hello_world():
+    print("Hello, w0rld!")
+
+hello_world()
 ```
+
+```ts
+function helloWorld() {
+  console.log("Hello, w0rld!");
+}
+
+helloWorld();
+```
+
 = Chapitre avec titre énormément long
 
+#show: appendix
+
+= Première annexe
+
+#lorem(100)

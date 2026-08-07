@@ -1,5 +1,7 @@
 #import "@preview/zebraw:0.6.3": *
+#import "@preview/hydra:0.6.3": anchor, hydra
 #import "colors.typ": *
+#import "environments.typ": *
 #import "front-pages.typ": *
 
 #let heh-syllabus(
@@ -27,19 +29,24 @@
 
   heh-syllabus-title-page(bind-correction, course, cursus, subtitle)
 
-  set heading(numbering: "1.1.")
   set page(
+    header: anchor(),
     footer: context {
+      let chapter-heading = query(heading.where(level: 1).before(here())).last()
       line(length: 100%, stroke: (thickness: 0.5pt))
       v(-0.5em)
       if calc.odd(here().page()) {
-        align(right)[
-          #move(dy: -0.7em, block(inset: 0.5em, stroke: (left: 0.5pt), counter(page).display("1")))
-        ]
+        align(right, move(dy: -0.7em)[
+          #if chapter-heading.location().page() != here().page() {
+            box(inset: 0.5em, hydra(2))
+          }
+          #box(inset: 0.5em, stroke: (left: 0.5pt), counter(page).display("1"))
+        ])
       } else {
-        align(left)[
-          #move(dy: -0.7em, block(inset: 0.5em, stroke: (right: 0.5pt), counter(page).display("1")))
-        ]
+        align(left, move(dy: -0.7em)[
+          #box(inset: 0.5em, stroke: (right: 0.5pt), counter(page).display("1"))
+          #box(inset: 0.5em, hydra(1))
+        ])
       }
     },
     margin: (inside: 2.5cm + bind-correction, rest: 2.5cm),
@@ -47,27 +54,6 @@
   )
   show heading: set par(justify: false)
   show heading.where(level: 1): set text(hyphenate: false)
-  show heading.where(level: 1): it => {
-    {
-      set page(header: none, footer: none)
-      pagebreak(to: "odd")
-    }
-    set align(right)
-
-    v(1em)
-    if it.numbering != none {
-      [
-        Chapitre #counter(heading).display("1")
-        #v(-0.75em)
-        #line(length: 100%, stroke: (thickness: 0.5pt))
-        #v(-0.1em)
-        #text(size: 2.369em)[ #it.body ]
-      ]
-    } else {
-      text(size: 2.369em)[ #it.body ]
-    }
-    v(5em)
-  }
   show heading.where(level: 2): set text(size: 1.777em)
   show heading.where(level: 2): set heading(supplement: "Section")
   show heading.where(level: 3): set text(size: 1.333em)
@@ -81,12 +67,11 @@
   show raw: set text(size: 1em / 0.8)
 
   show: zebraw.with(
-    background-color: purple.transparentize(100%),
+    background-color: white.transparentize(100%),
     lang: false,
-    numbering-separator: true,
   )
 
-  outline(depth: 2)
+  set outline(depth: 2)
 
   body
 }
