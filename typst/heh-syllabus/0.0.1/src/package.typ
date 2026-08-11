@@ -1,6 +1,6 @@
 #import "@preview/zebraw:0.6.3": *
 #import "@preview/hydra:0.6.3": anchor, hydra
-#import "colors.typ": *
+#import "@heh-dst/heh-style:0.0.1": *
 #import "environments.typ": *
 #import "front-pages.typ": *
 
@@ -12,16 +12,7 @@
   subtitle: "Syllabus de théorie",
   body,
 ) = {
-  set page(
-    paper: "a4",
-  )
-  set text(
-    font: "IBM Plex Sans",
-    lang: "fr",
-    size: 11pt,
-  )
-  show math.equation: set text(font: "STIX Two Math", stylistic-set: 1)
-  show raw: set text(font: "FiraCode Nerd Font")
+  show: heh-defaults
 
   heh-syllabus-cover-page(academic-year, bind-correction, course, cursus, subtitle)
 
@@ -52,20 +43,11 @@
     margin: (inside: 2.5cm + bind-correction, rest: 2.5cm),
     numbering: "1",
   )
-  show heading: set par(justify: false)
   show heading.where(level: 1): set text(hyphenate: false)
   show heading.where(level: 2): set text(size: 1.777em)
   show heading.where(level: 2): set heading(supplement: "Section")
   show heading.where(level: 3): set text(size: 1.333em)
   show heading.where(level: 3): set heading(supplement: "Point")
-
-  set par(justify: true)
-  show table: set par(justify: false)
-
-  set figure(supplement: "Figure")
-  set figure.caption(separator: [. ])
-
-  show raw: set text(size: 1em / 0.8)
 
   show: zebraw.with(
     background-color: white.transparentize(100%),

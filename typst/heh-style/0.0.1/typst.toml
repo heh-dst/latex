@@ -1,0 +1,8 @@
+[package]
+name = "heh-style"
+version = "0.0.1"
+entrypoint = "src/lib.typ"
+authors = ["François Roland"]
+description = "Common styles for HEH documents."
+repository = "https://github.com/heh-dst/latex.git"
+disciplines = ["computer-science", "education"]

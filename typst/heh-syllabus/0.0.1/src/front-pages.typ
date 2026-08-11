@@ -1,4 +1,4 @@
-#import "colors.typ": *
+#import "@heh-dst/heh-style:0.0.1": *
 
 #let heh-syllabus-cover-page(
   academic-year,
@@ -13,7 +13,7 @@
     margin: (inside: 1cm + bind-correction, rest: 1cm),
   )
   let left-header = {
-    image("images/logo-heh-dst.png", height: 1.6cm, alt: "Logo HEH")
+    heh-dst-logo()
     set text(size: 0.75em)
     let heh-link = block(
       fill: heh-red,
@@ -37,10 +37,8 @@
       height: 1em,
     ))))
     h(0.5em)
-    box[
-      Avenue V. Maistriau 8a \
-      7000 Mons
-    ]
+    box[Avenue V. Maistriau 8a \
+      7000 Mons]
     linebreak()
     let phone-icon = read("images/phone.svg").replace("currentColor", heh-red.to-hex())
     pdf.artifact(kind: "layout", box(width: 1em, align(center, image(
@@ -91,9 +89,9 @@
     ]
     h(1fr)
     box(baseline: bottom)[
-      #box(image("images/logo-wbe.jpg", height: 0.9cm, alt: "Logo Wallonie-Bruxelles Enseignement"))
+      #box(heh-wbe-logo())
       #h(1.5em)
-      #box(image("images/logo-pole-hainuyer.jpg", height: 0.9cm, alt: "Logo Pôle Hainuyer"))
+      #box(heh-pole-hainuyer-logo())
     ]
   }
 

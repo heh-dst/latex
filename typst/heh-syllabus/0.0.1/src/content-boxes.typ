@@ -1,5 +1,5 @@
 #import "@preview/showybox:2.0.4": showybox
-#import "colors.typ": *
+#import "@heh-dst/heh-style:0.0.1": *
 
 #let content-box(
   accent-color: color-palette.black,
