@@ -14,7 +14,7 @@
   // Font settings
   set text(font: "IBM Plex Sans", lang: "fr", size: 11pt)
   show math.equation: set text(font: "STIX Two Math", stylistic-set: 1)
-  show raw: set text(font: "FiraCode Nerd Font", size: 1em / 0.8)
+  show raw: set text(font: "FiraCode Nerd Font", features: (calt: 0), size: 1em / 0.85)
 
   // Paragraph settings
   set par(justify: false)
