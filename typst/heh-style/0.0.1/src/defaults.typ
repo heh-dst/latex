@@ -12,9 +12,15 @@
   )
 
   // Font settings
-  set text(font: "IBM Plex Sans", lang: "fr", size: 11pt)
+  set text(font: "IBM Plex Sans", hyphenate: true, lang: "fr", size: 11pt)
   show math.equation: set text(font: "STIX Two Math", stylistic-set: 1)
-  show raw: set text(font: "FiraCode Nerd Font", features: (calt: 0), size: 1em / 0.85)
+  show raw: set text(
+    costs: (hyphenation: 200%),
+    font: "FiraCode Nerd Font",
+    features: (calt: 0),
+    lang: "en",
+    size: 1em / 0.85,
+  )
 
   // Paragraph settings
   set par(justify: false)
