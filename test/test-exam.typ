@@ -16,7 +16,7 @@
 #question(points: 3)[Imitez son cri.]
 
 #question(points: 2)[
-  Quelle est la couleur du cheval blanc d'Henri IV ? #lorem(30)
+  Quelle est la `couleur` du cheval blanc d'Henri IV ? #lorem(30)
 
   C'est une question avec une longue consigne. #lorem(30)
 ]

@@ -25,6 +25,10 @@
     numbering: "1",
   )
 
+  show raw.where(block: false): box.with(inset: (x: 0.3em, y: 0pt), fill: luma(240), outset: (y: 0.3em), radius: 0.2em)
+
+  show raw.where(block: true): block.with(inset: 0.75em, fill: luma(240), radius: 0.4em)
+
   context {
     if (counter(page).get().first() == 1) {
       move(dy: -2em, {
