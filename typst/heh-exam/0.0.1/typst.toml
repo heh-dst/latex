@@ -1,7 +1,7 @@
 [package]
 name = "heh-exam"
 version = "0.0.1"
-entrypoint = "src/lib.typ"
+entrypoint = "lib.typ"
 authors = ["François Roland"]
 description = "Template for HEH exams."
 repository = "https://github.com/heh-dst/latex.git"
