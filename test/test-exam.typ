@@ -1,14 +1,11 @@
 #import "@heh-dst/heh-exam:0.0.1": *
 
-#set document(
-  title: "Examen de techniques numériques avancées",
-  author: "François Roland",
-)
-
 #show: heh-exam.with(
+  author: "François Roland",
   course: "Techniques numériques avancées",
   cursus: "Bachelier en informatique",
   subtitle: "Examen théorique",
+  title: "Examen de techniques numériques avancées",
 )
 
 #question(points: 2)[Quelle est la couleur du cheval blanc d'Henri IV ?]

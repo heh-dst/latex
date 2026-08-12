@@ -6,12 +6,19 @@
 #let show-solutions-state = state("show-solutions", false)
 
 #let heh-exam(
+  author: (),
   course: [],
   cursus: [],
   show-solutions: false,
+  title: [],
   subtitle: [],
   it,
 ) = {
+  set document(
+    title: title,
+    author: author,
+  )
+
   show: heh-defaults
 
   show-solutions-state.update(show-solutions)
