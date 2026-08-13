@@ -8,7 +8,13 @@
   title: "Examen de techniques numériques avancées",
 )
 
-#question(points: 2)[Quelle est la couleur du cheval blanc d'Henri IV ?]
+#question(points: 2)[
+  Quelle est la couleur du cheval blanc d'Henri IV ?
+
+  #solution[
+    En vrai, c'est blanc. #lorem(30)
+  ]
+]
 
 #question(points: 3)[Imitez son cri.]
 
