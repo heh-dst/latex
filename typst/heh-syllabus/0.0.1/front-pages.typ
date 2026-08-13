@@ -112,7 +112,7 @@
 
   counter(page).update(1)
 
-  box(baseline: top, image("images/logo-heh-dst.png", height: 1.6cm, alt: "Logo HEH"))
+  box(baseline: top, heh-dst-logo())
   h(1fr)
   box(
     baseline: top,
