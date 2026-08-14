@@ -46,13 +46,15 @@
 
   show raw.where(block: true): block.with(inset: 0.5em, fill: luma(240), radius: 0.4em)
 
+  show heading.where(level: 1): set block(above: 1.5em, below: 0.75em)
+  show heading.where(level: 1): set text(fill: color-red-palette.at(0))
   show heading.where(level: 1): it => {
-    v(0.5em)
-    box[#place(horizon, dx: -0.5cm, rect(width: 0.2cm, height: 1.2em, fill: color-red-palette.at(0))) #text(
-        fill: color-red-palette.at(0),
-        it,
-      )]
-    v(0.25em)
+    place(
+      dx: -0.5cm,
+      dy: -0.2em,
+      rect(width: 0.2cm, height: 1.2em, fill: color-red-palette.at(0)),
+    )
+    it
   }
 
   move(dy: -2em, {
@@ -72,10 +74,7 @@
       [Groupe :], [Date :],
     )
   }
-  align(center)[
-    #text(size: 1.777em, weight: "bold", title)
-    #v(0.5em)
-  ]
+  align(center, text(size: 1.777em, weight: "bold", block(above: 1em, below: 0.5em, title)))
 
   it
 }
