@@ -4,9 +4,10 @@
   author: "François Roland",
   course: "Techniques numériques avancées",
   cursus: "Bachelier en informatique",
-  subtitle: "Examen théorique",
-  title: "Examen de techniques numériques avancées",
+  title: "Examen théorique",
 )
+
+= 1re section
 
 #question(points: 2)[
   Quelle est la couleur du cheval blanc d'Henri IV ?
@@ -33,6 +34,8 @@
 #question(points: 2)[Quelle est la couleur du cheval blanc d'Henri IV ?]
 
 #question(points: 3)[Imitez son cri.]
+
+= 2e section
 
 #question[Quelle est la couleur du cheval blanc d'Henri IV ?
 

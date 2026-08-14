@@ -1,4 +1,4 @@
-#import "@heh-dst/heh-style:0.0.1": heh-defaults, heh-dst-logo
+#import "@heh-dst/heh-style:0.0.1": *
 #import "questions.typ": *
 
 #let heh-exam(
@@ -6,11 +6,10 @@
   course: [],
   cursus: [],
   title: [],
-  subtitle: [],
   it,
 ) = {
   set document(
-    title: title,
+    title: [#title - #course],
     author: author,
   )
 
@@ -28,6 +27,18 @@
   ]
 
   set page(
+    header: context {
+      set text(fill: color-palette.gray, size: 10pt)
+      if here().page() > 1 {
+        table(
+          align: left + top,
+          columns: (1fr, 1fr),
+          rows: 1cm,
+          stroke: 0.5pt + color-palette.gray,
+          [Nom :], [Prénom :],
+        )
+      }
+    },
     numbering: "1",
   )
 
@@ -35,21 +46,35 @@
 
   show raw.where(block: true): block.with(inset: 0.5em, fill: luma(240), radius: 0.4em)
 
-  context {
-    if counter(page).get().first() == 1 {
-      move(dy: -2em, {
-        box(baseline: top, left-header)
-        h(1fr)
-        box(baseline: top, right-header)
-      })
-    } else {
-      return none
-    }
+  show heading.where(level: 1): it => {
+    v(0.5em)
+    box[#place(horizon, dx: -0.5cm, rect(width: 0.2cm, height: 1.2em, fill: color-red-palette.at(0))) #text(
+        fill: color-red-palette.at(0),
+        it,
+      )]
+    v(0.25em)
   }
 
+  move(dy: -2em, {
+    box(baseline: top, left-header)
+    h(1fr)
+    box(baseline: top, right-header)
+  })
+
+  {
+    set text(fill: color-palette.gray, size: 10pt)
+    table(
+      align: left + top,
+      columns: (1fr, 1fr),
+      rows: 1cm,
+      stroke: 0.5pt + color-palette.gray,
+      [Nom :], [Prénom :],
+      [Groupe :], [Date :],
+    )
+  }
   align(center)[
-    #text(size: 1.777em, weight: "bold", subtitle)
-    #v(1em)
+    #text(size: 1.777em, weight: "bold", title)
+    #v(0.5em)
   ]
 
   it
