@@ -28,8 +28,8 @@
 
   set page(
     header: context {
-      set text(fill: color-palette.gray, size: 10pt)
-      if here().page() > 1 {
+      if here().page() != 1 {
+        set text(fill: color-palette.gray, size: 10pt)
         table(
           align: left + top,
           columns: (1fr, 1fr),
@@ -57,24 +57,25 @@
     it
   }
 
-  move(dy: -2em, {
+  {
+    v(-1.5cm)
     box(baseline: top, left-header)
     h(1fr)
     box(baseline: top, right-header)
-  })
 
-  {
-    set text(fill: color-palette.gray, size: 10pt)
-    table(
-      align: left + top,
-      columns: (1fr, 1fr),
-      rows: 1cm,
-      stroke: 0.5pt + color-palette.gray,
-      [Nom :], [Prénom :],
-      [Groupe :], [Date :],
-    )
+    {
+      set text(fill: color-palette.gray, size: 10pt)
+      table(
+        align: left + top,
+        columns: (1fr, 1fr),
+        rows: 1cm,
+        stroke: 0.5pt + color-palette.gray,
+        [Nom :], [Prénom :],
+        [Groupe :], [Date :],
+      )
+    }
+    align(center, text(size: 1.777em, weight: "bold", block(above: 1em, below: 1em, title)))
   }
-  align(center, text(size: 1.777em, weight: "bold", block(above: 1em, below: 0.5em, title)))
 
   it
 }
