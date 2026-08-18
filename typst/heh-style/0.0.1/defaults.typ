@@ -36,6 +36,12 @@
     decimal-separator: ",",
   )
 
+  // Replace spaces before high punctuation with non-breaking narrow spaces.
+  show regex("\s[?!;:]"): it => {
+    show regex("\s"): sym.space.nobreak.narrow
+    it
+  }
+
   context {
     set par(
       leading: leading(line-height),

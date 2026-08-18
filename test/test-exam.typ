@@ -21,7 +21,18 @@
 #question(points: 3)[Imitez son cri.]
 
 #question(points: 2)[
-  Quelle est la `couleur` du cheval blanc d'Henri IV ? #lorem(30)
+  Quelle est la `couleur` du cheval blanc d'Henri IV ?
+
+  Ce qu'on peut mettre après deux points : #lorem(27)
+
+  Ce qu'on peut mettre après deux points~: #lorem(27)
+
+  ```
+  Une ponctuation haute : dans un code !
+  ```
+
+  / ToDo: Une liste de termes.
+  / Et après: Vérifier comment les deux points sont gérés dans les listes.
 
   C'est une question avec une longue consigne. #lorem(30)
 ]
