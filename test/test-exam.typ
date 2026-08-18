@@ -1,4 +1,5 @@
 #import "@heh-dst/heh-exam:0.0.1": *
+#import "@preview/zero:0.7.0": num
 
 #show: heh-exam.with(
   author: "François Roland",
@@ -25,7 +26,9 @@
   C'est une question avec une longue consigne. #lorem(30)
 ]
 
-#question(points: 3)[Imitez son cri.]
+#question(points: 3)[Est-ce que les nombres comme #num(123456.789e-10) sont correctement affichés ?
+
+  Même ceux en notation ingénieur comme #num("123456.789+1-2", exponent: "eng") ?]
 
 #question(points: 2)[Quelle est la couleur du cheval blanc d'Henri IV ?]
 

@@ -49,6 +49,8 @@
   show heading.where(level: 3): set text(size: 1.333em)
   show heading.where(level: 3): set heading(supplement: "Point")
 
+  show figure.where(kind: table): set figure(supplement: [Tableau])
+
   show: zebraw.with(
     background-color: white.transparentize(100%),
     lang: false,

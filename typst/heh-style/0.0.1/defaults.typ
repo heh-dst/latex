@@ -1,3 +1,5 @@
+#import "@preview/zero:0.7.0": set-num
+
 // Convert line-height to leading, taking into account the cap height of the font.
 #let leading(line-height) = {
   let cap-height = measure("X").height
@@ -28,6 +30,11 @@
   // Figure settings
   set figure(supplement: "Figure")
   set figure.caption(separator: [. ])
+
+  set-num(
+    alt: auto,
+    decimal-separator: ",",
+  )
 
   context {
     set par(

@@ -5,6 +5,7 @@
   algorithm: "algorithm",
   code: "code",
   flowchart: "flowchart",
+  tables: "tables",
 )
 
 #let algorithm(caption: none, content) = figure(
