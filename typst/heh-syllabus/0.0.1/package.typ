@@ -54,6 +54,8 @@
   show: zebraw.with(
     background-color: white.transparentize(100%),
     lang: false,
+    numbering-font-args: (fill: luma(120), size: 0.8em),
+    numbering-separator: true,
   )
 
   set outline(depth: 2)
