@@ -1,4 +1,5 @@
 #import "@preview/zero:0.7.0": set-num
+#import "hyphenation.typ": *
 
 // Convert line-height to leading, taking into account the cap height of the font.
 #let leading(line-height) = {
@@ -41,6 +42,8 @@
     show regex("\s"): sym.space.nobreak.narrow
     it
   }
+
+  show: custom-hyphenations
 
   context {
     set par(
