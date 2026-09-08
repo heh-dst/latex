@@ -64,3 +64,11 @@
     content,
   )
 }
+
+#let prediction-box(content) = content-box(
+  accent-color: color-palette.orange,
+  breakable: true,
+  title: "Prédiction",
+  content,
+)
+
