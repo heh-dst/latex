@@ -25,6 +25,9 @@
     size: 1em / 0.85,
   )
 
+  // Inline code blocks
+  show raw.where(block: false): box.with(inset: (x: 0.3em, y: 0pt), fill: luma(240), outset: (y: 0.3em), radius: 0.2em)
+
   // Paragraph settings
   set par(justify: false)
 

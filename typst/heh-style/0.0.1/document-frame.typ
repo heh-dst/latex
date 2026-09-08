@@ -28,8 +28,6 @@
     numbering: "1",
   )
 
-  show raw.where(block: false): box.with(inset: (x: 0.3em, y: 0pt), fill: luma(240), outset: (y: 0.3em), radius: 0.2em)
-
   show raw.where(block: true): block.with(inset: 0.5em, fill: luma(240), radius: 0.4em)
 
   show heading.where(level: 1): set block(above: 1.5em, below: 0.75em)
