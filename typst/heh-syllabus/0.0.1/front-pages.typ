@@ -142,6 +142,10 @@
       Ces étudiants peuvent la consulter et la télécharger gratuitement pour un usage personnel uniquement.
       Cette version ne doit pas être redistribuée, vendue ou utilisée dans des travaux dérivés._
     ]),
-    image("images/manuel-conforme-orthographe-reforme-1990.png", width: 100%),
+    image(
+      "images/manuel-conforme-orthographe-reforme-1990.png",
+      alt: "Ce manuel est conforme à la nouvelle orthographe.",
+      width: 100%,
+    ),
   )
 }
