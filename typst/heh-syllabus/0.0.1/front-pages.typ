@@ -1,7 +1,7 @@
 #import "@heh-dst/heh-style:0.0.1": *
 
 #let heh-syllabus-cover-page(
-  academic-year,
+  edition,
   bind-correction,
   course,
   cursus,
@@ -63,7 +63,7 @@
     heh-link
   }
   let right-header = [
-    Année académique #text(fill: heh-red, weight: "bold", academic-year)
+    Édition #text(fill: heh-red, weight: "bold", edition)
   ]
   let header = {
     box(baseline: top, left-header)

@@ -5,7 +5,7 @@
 #import "front-pages.typ": *
 
 #let heh-syllabus(
-  academic-year: [ 2026~--~2027 ],
+  edition: [ 2026.1 ],
   bind-correction: 0.5cm,
   course: "Programmation",
   cursus: "Bachelier en techniques graphiques",
@@ -14,7 +14,7 @@
 ) = {
   show: heh-defaults
 
-  heh-syllabus-cover-page(academic-year, bind-correction, course, cursus, subtitle)
+  heh-syllabus-cover-page(edition, bind-correction, course, cursus, subtitle)
 
   pagebreak(to: "odd")
 
