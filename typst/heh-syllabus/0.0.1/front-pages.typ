@@ -105,7 +105,7 @@
   )
 }
 
-#let heh-syllabus-title-page(bind-correction, course, cursus, subtitle) = context {
+#let heh-syllabus-title-page(bind-correction, course, cursus, edition, subtitle) = context {
   set page(
     margin: (inside: 1cm + bind-correction, rest: 1cm),
   )
@@ -116,7 +116,11 @@
   h(1fr)
   box(
     baseline: top,
-    cursus,
+    align(right)[
+      #cursus
+      #v(-0.5em)
+      #text(fill: luma(120), size: 0.85em)[Édition #edition]
+    ],
   )
   v(2fr)
   align(center, [
@@ -129,10 +133,15 @@
     #text(size: 1em, document.author.join("\n"))
   ])
   v(3fr)
-  par(justify: true)[
-    #set text(size: 0.75em)
-    _Cette version est destinée aux étudiants régulièrement inscrits à la Haute École en Hainaut au cours de #course.
-    Ces étudiants peuvent la consulter et la télécharger gratuitement pour un usage personnel uniquement.
-    Cette version ne doit pas être redistribuée, vendue ou utilisée dans des travaux dérivés._
-  ]
+  grid(
+    align: horizon,
+    columns: (5fr, 5em),
+    gutter: 20pt,
+    par(justify: true, text(size: 0.75em)[
+      _Cette version est destinée aux étudiants régulièrement inscrits à la Haute École en Hainaut au cours de #course.
+      Ces étudiants peuvent la consulter et la télécharger gratuitement pour un usage personnel uniquement.
+      Cette version ne doit pas être redistribuée, vendue ou utilisée dans des travaux dérivés._
+    ]),
+    image("images/manuel-conforme-orthographe-reforme-1990.png", width: 100%),
+  )
 }

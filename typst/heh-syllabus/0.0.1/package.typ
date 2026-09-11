@@ -18,7 +18,7 @@
 
   pagebreak(to: "odd")
 
-  heh-syllabus-title-page(bind-correction, course, cursus, subtitle)
+  heh-syllabus-title-page(bind-correction, course, cursus, edition, subtitle)
 
   set page(
     header: anchor(),
@@ -54,7 +54,7 @@
   show: zebraw.with(
     background-color: white.transparentize(100%),
     lang: false,
-    numbering-font-args: (fill: luma(120), size: 0.8em),
+    numbering-font-args: (fill: color-palette.gray, size: 0.8em),
     numbering-separator: true,
   )
 
